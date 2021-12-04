@@ -44,10 +44,8 @@ namespace NCMB
 		//APIバージョン
 		private static string _apiVersion = "";
 		//static NG
-		[SerializeField]
 		internal string
 			applicationKey = "";
-		[SerializeField]
 		internal string
 			clientKey = "";
 		[SerializeField]
@@ -226,6 +224,8 @@ namespace NCMB
 		/// </summary>
 		public virtual void Awake ()
 		{
+			applicationKey = Env.appKey;
+			clientKey = Env.clientKey;
 			if (!NCMBSettings._isInitialized) {
 				NCMBSettings._isInitialized = true;
 				_responseValidationFlag = responseValidation;
