@@ -49,7 +49,7 @@ public class ZangeInput : MonoBehaviour
                 if (objList.Count == 0)
                 {
                     //zangesのzangeフィールドに入力欄の内容を追加する。
-                    zanges.AddToList("zangeText", zangeInputField.text);
+                    zanges.Add("zangeText", zangeInputField.text);
                     zanges.SaveAsync((NCMBException sae) =>
                     {
                         if (sae != null)
