@@ -11,17 +11,6 @@ public class GetRandomZange : MonoBehaviour
     //zangesåüçıÇÃÇΩÇﬂÇ…ÅANCMBQueryçÏê¨
     NCMBQuery<NCMBObject> zangesQuery = new NCMBQuery<NCMBObject>("Zange");
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void GetZange()
     {
         zangesQuery.FindAsync((List<NCMBObject> allZanges, NCMBException e) =>
@@ -33,9 +22,7 @@ public class GetRandomZange : MonoBehaviour
             else
             {
                 int zangeObjectNumber = Random.Range(0, allZanges.Count);
-                Debug.Log(allZanges[zangeObjectNumber]["zangeText"]);
-                //ArrayListå^?Å@NCMB Objectå^
-                infoText.text = allZanges[zangeObjectNumber].ObjectId;
+                infoText.text = allZanges[zangeObjectNumber]["zangeText"].ToString();
             }
         });
     }

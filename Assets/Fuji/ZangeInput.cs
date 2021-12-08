@@ -12,10 +12,6 @@ public class ZangeInput : MonoBehaviour
     [SerializeField] private TMP_InputField zangeInputField = null;
     [SerializeField] private Button sendButton = null;
 
-    //NCMBにZangesFromPlayersという名でNCMBクラスを作成する。
-    //スクリプトではzangesと呼ぶ。
-    NCMBObject zanges = new NCMBObject("Zange");
-
     //zanges検索のために、NCMBQuery作成
     NCMBQuery<NCMBObject> zangesQuery = new NCMBQuery<NCMBObject>("Zange");
 
@@ -48,6 +44,8 @@ public class ZangeInput : MonoBehaviour
                 //リストの長さが0ならまだない懺悔なので登録
                 if (objList.Count == 0)
                 {
+                    //このタイミングでNCMBオブジェクト生成することで、ID更新ができる。
+                    NCMBObject zanges = new NCMBObject("Zange");
                     //zangesのzangeフィールドに入力欄の内容を追加する。
                     zanges.Add("zangeText", zangeInputField.text);
                     zanges.SaveAsync((NCMBException sae) =>
