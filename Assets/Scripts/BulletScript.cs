@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class BulletScript : MonoBehaviour
 {
     Vector2 vector;
     float speed = 0.3f;
+    public ObjectPool<GameObject> objectPool;
 
     public void SetDirection(Quaternion rot)
     {
@@ -18,6 +20,29 @@ public class BulletScript : MonoBehaviour
         
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("collision:"+collision.transform.tag);
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Destroy(collision.gameObject);
+            objectPool.Release(gameObject);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("trigger:"+collision.tag);
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Destroy(collision.gameObject);
+            objectPool.Release(gameObject);
+        }else if(collision.gameObject.tag == "Wall")
+        {
+            objectPool.Release(gameObject);
+        }
+        
+    }
 
 
     // Update is called once per frame
