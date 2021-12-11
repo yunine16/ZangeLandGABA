@@ -20,15 +20,6 @@ public class BulletScript : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Debug.Log("collision:"+collision.transform.tag);
-        if (collision.gameObject.tag == "Enemy")
-        {
-            Destroy(collision.gameObject);
-            objectPool.Release(gameObject);
-        }
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

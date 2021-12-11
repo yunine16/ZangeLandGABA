@@ -11,6 +11,8 @@ public class PlayerMove : MonoBehaviour
     public GameObject prefabBullet;
     float elapsedTime;
     ObjectPool<GameObject> objectPool;
+    [SerializeField]
+    GameObject player;
 
     // Start is called before the first frame update
     void Start()
@@ -54,10 +56,10 @@ public class PlayerMove : MonoBehaviour
         if (Input.GetKey(KeyCode.S)) vector += Vector2.down * speed;
         if (Input.GetKey(KeyCode.D)) vector += Vector2.right * speed;
 
-        gameObject.transform.Translate(vector,Space.World);
+        player.transform.Translate(vector,Space.World);
 
         //カーソルの方向を向く
-        var pos = Camera.main.WorldToScreenPoint(transform.localPosition);
+        var pos = Camera.main.WorldToScreenPoint(player.transform.localPosition);
         var rotation = Quaternion.LookRotation(Vector3.forward, Input.mousePosition - pos);
         transform.localRotation = rotation;
 
