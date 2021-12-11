@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Fuji/Fuji_SendToNCMB.unity
+    path: Assets/Fuji/UnityToNCMB/Fuji_SendToNCMB.unity
     guid: 955ee183094f99c43b419745a1610717
   m_configObjects: {}
