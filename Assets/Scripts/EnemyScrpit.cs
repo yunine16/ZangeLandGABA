@@ -13,8 +13,16 @@ public class EnemyScrpit : MonoBehaviour
     float speed = 8;
     float rotSpeed = 1440;
 
+    ShootingManager shootingManager;
+
+    private void Start()
+    {
+        shootingManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<ShootingManager>();
+    }
+
     private void Update()
     {
+        if (shootingManager.shootingState == ShootingManager.ShootingState.Pause) return;
         if (isRot)
         {
             transform.Rotate(RotRad * rotSpeed * Time.deltaTime);

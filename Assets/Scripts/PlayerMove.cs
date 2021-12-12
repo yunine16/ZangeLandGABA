@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
+using TMPro;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -14,9 +15,19 @@ public class PlayerMove : MonoBehaviour
     [SerializeField]
     GameObject player;
 
+    bool isInvincible;
+
+    public ShootingManager shootingManager;
+    Renderer shipRenderer;
+
+    public TextMeshProUGUI leftText;
+    int left=2;
+
     // Start is called before the first frame update
     void Start()
     {
+        shipRenderer = GetComponent<Renderer>();
+
         // オブジェクトプールを作成
         objectPool = new ObjectPool<GameObject>(() =>
         {
@@ -49,6 +60,7 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (shootingManager.shootingState == ShootingManager.ShootingState.Pause) return;
         //WASDで移動
         vector = Vector2.zero;
         if (Input.GetKey(KeyCode.W)) vector += Vector2.up * speed;
@@ -79,13 +91,42 @@ public class PlayerMove : MonoBehaviour
         bullet.transform.rotation = rot;
         //GameObject bullet = Instantiate(prefabBullet, transform.position, rot, null);
         bullet.GetComponent<BulletScript>().SetDirection(rot);
+        string typeSENumber = Random.Range(0, 4).ToString();
+        SEManager.Instance.PlaySE("Typing" + typeSENumber);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Enemy")
+        if(collision.tag == "Enemy" && !isInvincible)
         {
+            isInvincible = true;
+            StartCoroutine(Invincible());
             Debug.Log("EnemyにPlayerがHIT!");
+        }
+    }
+
+    IEnumerator Invincible()
+    {
+        left--;
+        leftText.text = "×" + left.ToString();
+        for (int i = 0; i < 4; i++)
+        {
+            shipRenderer.enabled = false;
+            yield return StartCoroutine(wait(0.125f));
+            shipRenderer.enabled = true;
+            yield return StartCoroutine(wait(0.125f));
+        }
+        
+        isInvincible = false;
+    }
+
+    IEnumerator wait(float waitTime)
+    {
+        float elapsedTime = 0f;
+        while (waitTime > elapsedTime)
+        {
+            if (shootingManager.shootingState != ShootingManager.ShootingState.Pause) elapsedTime += Time.deltaTime;
+            yield return null;
         }
     }
 }

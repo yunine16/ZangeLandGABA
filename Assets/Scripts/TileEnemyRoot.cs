@@ -7,6 +7,7 @@ using System;
 public class TileEnemyRoot : MonoBehaviour
 {
     public GameObject prefabEnemy;
+    public ShootingManager shootingManager;
 
     Vector2 vector2;
 
@@ -20,7 +21,7 @@ public class TileEnemyRoot : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        shootingManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<ShootingManager>();
     }
 
     public void Init(string zange)
@@ -58,9 +59,9 @@ public class TileEnemyRoot : MonoBehaviour
 
         foreach (Transform item in children)
         {
-            yield return new WaitForSeconds(1f);
+            yield return StartCoroutine(wait(1f));
             StartCoroutine(TileRot(item));
-            yield return new WaitForSeconds(1f);
+            yield return StartCoroutine(wait(1f));
         }
         yield return null;
     }
@@ -69,8 +70,18 @@ public class TileEnemyRoot : MonoBehaviour
     {
         EnemyScrpit enemyScript = item.GetComponent<EnemyScrpit>();
         enemyScript.RotStart();
-        yield return new WaitForSeconds(2f);
+        yield return StartCoroutine(wait(2f));
         enemyScript.TrackAttack();
+    }
+
+    IEnumerator wait(float waitTime)
+    {
+        float elapsedTime=0f;
+        while (waitTime > elapsedTime)
+        {
+            if (shootingManager.shootingState != ShootingManager.ShootingState.Pause) elapsedTime += Time.deltaTime;
+            yield return null;
+        }
     }
 
 }
