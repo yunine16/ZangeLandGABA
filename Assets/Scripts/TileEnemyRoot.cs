@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using System;
+using DG.Tweening;
 
 public class TileEnemyRoot : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class TileEnemyRoot : MonoBehaviour
     public ShootingManager shootingManager;
 
     Vector2 vector2;
+
+    Tweener tweener;
+    bool isTweenMove;
 
     public enum TileState
     {
@@ -24,6 +28,7 @@ public class TileEnemyRoot : MonoBehaviour
     {
         shootingManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<ShootingManager>();
         progress = TileState.Appear;
+        tweener = transform.DOMoveY(transform.position.y -3f, 3f);
         StartCoroutine(AppearWait());
     }
 
@@ -43,9 +48,16 @@ public class TileEnemyRoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         if(progress == TileState.Appear)
         {
             transform.position += Vector3.down * Time.deltaTime;
+        }
+        */
+        if (tweener.IsActive())
+        {
+            if (shootingManager.shootingState == ShootingManager.ShootingState.Pause && tweener.IsPlaying()) tweener.Pause();
+            else if (shootingManager.shootingState == ShootingManager.ShootingState.Playing && !tweener.IsPlaying()) tweener.Play();
         }
         if (transform.childCount <= 0)
         {
@@ -69,9 +81,9 @@ public class TileEnemyRoot : MonoBehaviour
 
         foreach (Transform item in children)
         {
-            yield return StartCoroutine(wait(1f));
+            yield return StartCoroutine(wait(0.5f));
             StartCoroutine(TileRot(item));
-            yield return StartCoroutine(wait(1f));
+            yield return StartCoroutine(wait(0.5f));
         }
         yield return null;
     }
