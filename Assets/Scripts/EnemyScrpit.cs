@@ -53,6 +53,7 @@ public class EnemyScrpit : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (!isTrackAttack) return;
         if (collision.tag == "Wall") Destroy(gameObject);
     }
 

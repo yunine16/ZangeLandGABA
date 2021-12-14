@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ShootingManager : MonoBehaviour
 {
+    int enemyLeft = 10;
+
     public enum ShootingState
     {
         Playing,
@@ -21,6 +23,12 @@ public class ShootingManager : MonoBehaviour
     void Start()
     {
         
+    }
+
+    public void Elminate()
+    {
+        enemyLeft--;
+        Debug.Log("enemyLeft = " + enemyLeft.ToString());
     }
 
     // Update is called once per frame

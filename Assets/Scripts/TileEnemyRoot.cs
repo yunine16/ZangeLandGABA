@@ -11,37 +11,47 @@ public class TileEnemyRoot : MonoBehaviour
 
     Vector2 vector2;
 
-    public enum EnemyType
+    public enum TileState
     {
-        Tile,
+        Appear,
+        Attack
     }
 
-    bool isactive;
+    TileState progress;
 
     // Start is called before the first frame update
     void Start()
     {
         shootingManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<ShootingManager>();
+        progress = TileState.Appear;
+        StartCoroutine(AppearWait());
     }
 
     public void Init(string zange)
     {
         for (int i = 0; i < zange.Length; i++)
         {
-            vector2.x = i % 10;
-            vector2.y = -(int)i / 10;
+            vector2.x = ((float)i % 10f)/2f;
+            vector2.y = -(float)((int)i / 10)/2;
             GameObject enemy = Instantiate(prefabEnemy, transform);
-            enemy.transform.position = vector2;
+            enemy.transform.position = (Vector2)transform.position + vector2;
             enemy.transform.rotation = Quaternion.identity;
             enemy.transform.GetChild(0).GetComponent<TextMesh>().text = zange[i].ToString();
         }
-        StartCoroutine(TileAttack());
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(progress == TileState.Appear)
+        {
+            transform.position += Vector3.down * Time.deltaTime;
+        }
+        if (transform.childCount <= 0)
+        {
+            shootingManager.Elminate();
+            Destroy(this.gameObject);
+        }
     }
 
     public IEnumerator TileAttack()
@@ -72,6 +82,13 @@ public class TileEnemyRoot : MonoBehaviour
         enemyScript.RotStart();
         yield return StartCoroutine(wait(2f));
         enemyScript.TrackAttack();
+    }
+
+    public IEnumerator AppearWait()
+    {
+        yield return StartCoroutine(wait(3f));
+        progress = TileState.Attack;
+        StartCoroutine(TileAttack());
     }
 
     IEnumerator wait(float waitTime)

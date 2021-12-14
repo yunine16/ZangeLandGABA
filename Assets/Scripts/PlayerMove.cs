@@ -40,19 +40,16 @@ public class PlayerMove : MonoBehaviour
         target =>
         {
             // 再利用処理
-            print("GET");
             target.SetActive(true);
         },
         target =>
         {
             // プールに戻す処理
-            print("RELEASE");
             target.SetActive(false);
         },
         target =>
         {
             // プールの許容量を超えた場合の破棄処理
-            print("DESTROY");
             Destroy(target);
         }, true, 100, 1000);
     }
@@ -63,10 +60,10 @@ public class PlayerMove : MonoBehaviour
         if (shootingManager.shootingState == ShootingManager.ShootingState.Pause) return;
         //WASDで移動
         vector = Vector2.zero;
-        if (Input.GetKey(KeyCode.W)) vector += Vector2.up * speed;
-        if (Input.GetKey(KeyCode.A)) vector += Vector2.left * speed;
-        if (Input.GetKey(KeyCode.S)) vector += Vector2.down * speed;
-        if (Input.GetKey(KeyCode.D)) vector += Vector2.right * speed;
+        if (Input.GetKey(KeyCode.W) && transform.position.y < 2.75f) vector += Vector2.up * speed;
+        if (Input.GetKey(KeyCode.A) && transform.position.x > -6f) vector += Vector2.left * speed;
+        if (Input.GetKey(KeyCode.S) && transform.position.y > -4.45f) vector += Vector2.down * speed;
+        if (Input.GetKey(KeyCode.D) && transform.position.x < 6f) vector += Vector2.right * speed;
 
         player.transform.Translate(vector,Space.World);
 
