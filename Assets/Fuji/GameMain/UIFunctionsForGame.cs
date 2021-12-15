@@ -44,6 +44,10 @@ public class UIFunctionsForGame : MonoBehaviour
             SEManager.Instance.PlaySE("SEVolumeChanged");
             changingSEVolume = false;
         }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            PauseButton();
+        }
     }
     public void PointerEnter()
     {
