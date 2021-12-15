@@ -6,6 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Fuji/UnityToNCMB/Fuji_SendToNCMB.unity
+    path: Assets/Fuji/Title/Fuji_Title.unity
+    guid: 9e380fb8692b56d4a8d45802a45be9cd
+  - enabled: 1
+    path: Assets/Fuji/Prologue/Fuji_Prologue.unity
+    guid: c82a8da42b4c6cd47b9e2c5435e5eb28
+  - enabled: 1
+    path: Assets/Fuji/GameMain/Fuji_Game.unity
     guid: 955ee183094f99c43b419745a1610717
+  - enabled: 1
+    path: Assets/Fuji/Clear/Fuji_Clear.unity
+    guid: 4ad7c93612a5b3b4bbf887a9d3037d9f
   m_configObjects: {}
