@@ -11,6 +11,7 @@ public class ZangeInput : MonoBehaviour
     [SerializeField] private TextMeshProUGUI infoText = null;
     [SerializeField] private TMP_InputField zangeInputField = null;
     [SerializeField] private Button sendButton = null;
+    [SerializeField] private UIFunctionsForGame gameUIscript;
 
     //zangesåüçıÇÃÇΩÇﬂÇ…ÅANCMBQueryçÏê¨
     NCMBQuery<NCMBObject> zangesQuery = new NCMBQuery<NCMBObject>("Zange");
@@ -40,6 +41,7 @@ public class ZangeInput : MonoBehaviour
             if (fae != null)
             {
                 infoText.text = "sorry, error occured";
+                gameUIscript.Revenge();
             }
             else
             {
@@ -61,6 +63,7 @@ public class ZangeInput : MonoBehaviour
                             infoText.text = "successfully sent";
                         }
                     });
+                    gameUIscript.Revenge();
                 }
                 //ä˘èoÇÃúâ˜Ç»ÇÁìoò^ÇµÇ»Ç¢
                 else

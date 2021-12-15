@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c11adca5f26e5e9428941c92458e119f, type: 3}
+  m_Name: TitleScene
+  m_EditorClassIdentifier: 
+  SEName:
+  - SEVolumeChanged
+  - MouseOver
+  - CreditButton
+  - StartButton
+  SEClip:
+  - {fileID: 8300000, guid: 8e58bd5d1b5983f46909f7f0342873c6, type: 3}
+  - {fileID: 8300000, guid: 02ef19f6cc920c34f9ea72084b14a1fe, type: 3}
+  - {fileID: 8300000, guid: 483f81d4cbe9ca547a0ef896ad76cd74, type: 3}
+  - {fileID: 8300000, guid: a1e116b934f3c944d9dc3bd90315b729, type: 3}

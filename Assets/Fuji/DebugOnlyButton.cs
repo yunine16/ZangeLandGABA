@@ -21,6 +21,5 @@ public class DebugOnlyButton : MonoBehaviour
         {
             //infoText.text = getRandomZange.GetZange();
         }
-        SEManager.Instance.PlaySEDebug();
     }
 }
