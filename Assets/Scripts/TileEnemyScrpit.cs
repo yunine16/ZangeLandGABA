@@ -4,10 +4,9 @@ using UnityEngine;
 using UnityEngine.Pool;
 using DG.Tweening;
 
-public class EnemyScrpit : MonoBehaviour
+public class TileEnemyScrpit : MonoBehaviour
 {
     Vector3 RotRad = new Vector3(0f, 0f, 1f);
-    public ObjectPool<GameObject> objectPool;
     bool isRot,isTrackAttack;
     Vector2 moveVec;
     float speed = 8;
@@ -22,7 +21,7 @@ public class EnemyScrpit : MonoBehaviour
 
     private void Update()
     {
-        if (shootingManager.shootingState == ShootingManager.ShootingState.Pause) return;
+        if (shootingManager.shootingState != ShootingManager.ShootingState.Playing) return;
         if (isRot)
         {
             transform.Rotate(RotRad * rotSpeed * Time.deltaTime);
@@ -36,11 +35,6 @@ public class EnemyScrpit : MonoBehaviour
     public void RotStart()
     {
         isRot = true;
-    }
-
-    public void Release()
-    {
-        objectPool.Release(gameObject);
     }
 
     public void TrackAttack()

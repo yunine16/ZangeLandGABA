@@ -18,7 +18,7 @@ public class PlayerMove : MonoBehaviour
     bool isInvincible;
 
     public ShootingManager shootingManager;
-    Renderer shipRenderer;
+    Renderer[] shipRenderers;
 
     public TextMeshProUGUI leftText;
     int left=2;
@@ -26,7 +26,7 @@ public class PlayerMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        shipRenderer = GetComponent<Renderer>();
+        shipRenderers = GetComponentsInChildren<Renderer>();
 
         // オブジェクトプールを作成
         objectPool = new ObjectPool<GameObject>(() =>
@@ -57,7 +57,7 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (shootingManager.shootingState == ShootingManager.ShootingState.Pause) return;
+        if (shootingManager.shootingState != ShootingManager.ShootingState.Playing) return;
         //WASDで移動
         vector = Vector2.zero;
         if (Input.GetKey(KeyCode.W) && transform.position.y < 2.75f) vector += Vector2.up * speed;
@@ -108,9 +108,12 @@ public class PlayerMove : MonoBehaviour
         leftText.text = "×" + left.ToString();
         for (int i = 0; i < 4; i++)
         {
-            shipRenderer.enabled = false;
+
+            shipRenderers[0].enabled = false;
+            shipRenderers[1].enabled = false;
             yield return StartCoroutine(wait(0.125f));
-            shipRenderer.enabled = true;
+            shipRenderers[0].enabled = true;
+            shipRenderers[1].enabled = true;
             yield return StartCoroutine(wait(0.125f));
         }
         
