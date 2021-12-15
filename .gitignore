@@ -69,3 +69,9 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+Assets/Fuji/Env.cs
+Assets/Fuji/Env.cs.meta
+Images/Zangames.xcf
+Images/ZangabaImage.xcf
+Images/sagalogo.jpg
+Images/gabalogo.xcf
