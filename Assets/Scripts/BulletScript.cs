@@ -8,6 +8,7 @@ public class BulletScript : MonoBehaviour
     Vector2 vector;
     float speed = 0.3f;
     public ObjectPool<GameObject> objectPool;
+    ShootingManager shootingManager;
 
     public void SetDirection(Quaternion rot)
     {
@@ -17,16 +18,16 @@ public class BulletScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        shootingManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<ShootingManager>();
     }
 
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("trigger:"+collision.tag);
         if (collision.gameObject.tag == "Enemy")
         {
             Destroy(collision.gameObject);
+            shootingManager.AddScore(50);
             objectPool.Release(gameObject);
         }else if(collision.gameObject.tag == "Wall")
         {
@@ -39,6 +40,7 @@ public class BulletScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (shootingManager.shootingState != ShootingManager.ShootingState.Playing) return;
         transform.Translate(vector, Space.World);
     }
 }

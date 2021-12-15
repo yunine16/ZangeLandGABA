@@ -4,17 +4,24 @@ using UnityEngine;
 using UnityEngine.Pool;
 using DG.Tweening;
 
-public class EnemyScrpit : MonoBehaviour
+public class TileEnemyScrpit : MonoBehaviour
 {
     Vector3 RotRad = new Vector3(0f, 0f, 1f);
-    public ObjectPool<GameObject> objectPool;
     bool isRot,isTrackAttack;
     Vector2 moveVec;
     float speed = 8;
     float rotSpeed = 1440;
 
+    ShootingManager shootingManager;
+
+    private void Start()
+    {
+        shootingManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<ShootingManager>();
+    }
+
     private void Update()
     {
+        if (shootingManager.shootingState != ShootingManager.ShootingState.Playing) return;
         if (isRot)
         {
             transform.Rotate(RotRad * rotSpeed * Time.deltaTime);
@@ -30,11 +37,6 @@ public class EnemyScrpit : MonoBehaviour
         isRot = true;
     }
 
-    public void Release()
-    {
-        objectPool.Release(gameObject);
-    }
-
     public void TrackAttack()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -45,6 +47,7 @@ public class EnemyScrpit : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (!isTrackAttack) return;
         if (collision.tag == "Wall") Destroy(gameObject);
     }
 

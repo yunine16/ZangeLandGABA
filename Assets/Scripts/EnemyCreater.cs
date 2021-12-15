@@ -10,16 +10,33 @@ public class EnemyCreater : MonoBehaviour
     [SerializeField]
     GameObject prefabEnemy;
     Vector2 vector2;
-    public GameObject TileEnemyRoot;
+    public GameObject TileEnemyRoot,CircleEnemyRoot;
     ObjectPool<GameObject> objectPool;
+
+    enum EnemyType
+    {
+        Tile = 0,
+        Circle = 1,
+        Snake = 2,
+        HourGlass = 3
+    }
 
     // Start is called before the first frame update
     void Start()
     {
+        EnemyType enemyType = (EnemyType)1;
 
-        //StartCoroutine(EnemyRoot.GetComponent<TileEnemyRoot>().TileAttack());
-        Instantiate(TileEnemyRoot).GetComponent<TileEnemyRoot>().Init(zange);
-
+        switch (enemyType)
+        {
+            case EnemyType.Tile:
+                Instantiate(TileEnemyRoot,transform.position,Quaternion.identity).GetComponent<TileEnemyRoot>().Init(zange);
+                break;
+            case EnemyType.Circle:
+                Instantiate(CircleEnemyRoot, transform.position, Quaternion.identity).GetComponent<CircleEnemyRoot>().Init(zange);
+                break;
+            default:
+                break;
+        }
         
     }
 
