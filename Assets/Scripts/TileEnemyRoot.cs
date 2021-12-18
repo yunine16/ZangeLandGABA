@@ -10,7 +10,7 @@ public class TileEnemyRoot : MonoBehaviour
     public GameObject prefabEnemy;
     public ShootingManager shootingManager;
 
-    Vector2 vector2;
+    Vector3 vector = Vector3.zero;
 
     Tweener tweener;
     bool isTweenMove;
@@ -36,11 +36,11 @@ public class TileEnemyRoot : MonoBehaviour
     {
         for (int i = 0; i < zange.Length; i++)
         {
-            vector2.x = ((float)i % 10f)/2f;
-            vector2.y = -(float)((int)i / 10)/2;
+            vector.x = ((float)i % 10f)/2f;
+            vector.y = -(float)((int)i / 10)/2;
             GameObject enemy = Instantiate(prefabEnemy, transform);
             enemy.AddComponent<TileEnemyScript>();
-            enemy.transform.position = (Vector2)transform.position + vector2;
+            enemy.transform.position = transform.position + vector;
             enemy.transform.rotation = Quaternion.identity;
             enemy.transform.GetChild(0).GetComponent<TextMesh>().text = zange[i].ToString();
         }
@@ -109,7 +109,7 @@ public class TileEnemyRoot : MonoBehaviour
         float elapsedTime=0f;
         while (waitTime > elapsedTime)
         {
-            if (shootingManager.shootingState != ShootingManager.ShootingState.Pause) elapsedTime += Time.deltaTime;
+            if (shootingManager.shootingState == ShootingManager.ShootingState.Playing) elapsedTime += Time.deltaTime;
             yield return null;
         }
     }

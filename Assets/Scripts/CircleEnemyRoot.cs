@@ -10,7 +10,7 @@ public class CircleEnemyRoot : MonoBehaviour
     public GameObject prefabEnemy;
     public ShootingManager shootingManager;
 
-    Vector2 vector2,moveVec;
+    Vector3 vector=Vector3.zero,moveVec;
     Tweener tweener;
     List<Tweener> childTweens;
 
@@ -41,10 +41,10 @@ public class CircleEnemyRoot : MonoBehaviour
     {
         for (int i = 0; i < zange.Length; i++)
         {
-            vector2.x = ((float)i % 10f) / 2f - 2.5f;
-            vector2.y = -(float)((int)i / 10)/2;
+            vector.x = ((float)i % 10f) / 2f - 2.5f;
+            vector.y = -(float)((int)i / 10)/2;
             GameObject enemy = Instantiate(prefabEnemy, transform);
-            enemy.transform.position = (Vector2)transform.position + vector2;
+            enemy.transform.position = transform.position + vector;
             enemy.transform.rotation = Quaternion.identity;
             enemy.transform.GetChild(0).GetComponent<TextMesh>().text = zange[i].ToString();
             enemy.AddComponent<EnemyDefault>();
@@ -75,7 +75,7 @@ public class CircleEnemyRoot : MonoBehaviour
         if (shootingManager.shootingState != ShootingManager.ShootingState.Playing) return;
         if (isAttack)
         {
-            transform.position += (Vector3)moveVec * speed * Time.deltaTime;
+            transform.position += moveVec * speed * Time.deltaTime;
             transform.Rotate(rotRad * rotSpeed * Time.deltaTime);
         }
     }
@@ -112,7 +112,7 @@ public class CircleEnemyRoot : MonoBehaviour
         float elapsedTime=0f;
         while (waitTime > elapsedTime)
         {
-            if (shootingManager.shootingState != ShootingManager.ShootingState.Pause) elapsedTime += Time.deltaTime;
+            if (shootingManager.shootingState == ShootingManager.ShootingState.Playing) elapsedTime += Time.deltaTime;
             yield return null;
         }
     }

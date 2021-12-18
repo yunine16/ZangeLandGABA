@@ -16,11 +16,13 @@ public class ShootingManager : MonoBehaviour
     public TextMeshProUGUI leftText;
     [SerializeField] StageProgressScreen stageProgressScreen;
     [SerializeField] EnemyCreater enemyCreater;
+    [SerializeField] UIFunctionsForGame uIFunctionsForGame;
 
     public enum ShootingState
     {
         Playing,
-        Pause
+        Pause,
+        Failure
     }
 
     public ShootingState shootingState;
@@ -46,7 +48,7 @@ public class ShootingManager : MonoBehaviour
         existEnemy--;
         shootingProgress += progressPerEnemy;
         stageProgressScreen.stageProgress = shootingProgress;
-        if (shootingProgress >= 100) GameCrear();
+        if (shootingProgress >= 100) { GameCrear(); return; }
         level += 0.4f;
         if (existEnemy <= 0)
         {
@@ -84,11 +86,21 @@ public class ShootingManager : MonoBehaviour
 
     void GameCrear()
     {
-        Debug.Log("game crear");
+        uIFunctionsForGame.Success();
+    }
+
+    public void Revenge()
+    {
+        ChangeState(ShootingState.Playing);
+        for (int i = 0; i < 3; i++)
+        {
+            AddLeft();
+        }
     }
 
     private void GameOver()
     {
-        Debug.Log("game over");
+        ChangeState(ShootingState.Failure);
+        uIFunctionsForGame.Failure();
     }
 }

@@ -152,6 +152,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 076a3cafd988dad4aadc17d8957557d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  seInfos:
+  - SEtiming: 7
+    audioClip: {fileID: 8300000, guid: 8e58bd5d1b5983f46909f7f0342873c6, type: 3}
+  - SEtiming: 10
+    audioClip: {fileID: 8300000, guid: 02ef19f6cc920c34f9ea72084b14a1fe, type: 3}
   narrationTexts:
   - "jackFes\u306F12\u6708\u3001\u6765\u6708\u304B\u30892022\u5E74!"
   - "\u4ECA\u5E74\u306F\u3061\u3087\u3063\u3074\u308A\u30C0\u30E1\u30C0\u30E1\u3067\u3001\u79C1\u30AC\u30D0\u3063\u3068\u308B\u306A\u30FC\u306A\u3093\u3066\u601D\u3063\u305F\u3068\u304D\u3082\u3042\u3063\u305F\u3063\u3051"
