@@ -69,7 +69,7 @@ public class CircleEnemyRoot : MonoBehaviour
         }
         if (transform.childCount <= 0)
         {
-            shootingManager.Elminate();
+            shootingManager.Eliminate();
             Destroy(this.gameObject);
         }
         if (shootingManager.shootingState != ShootingManager.ShootingState.Playing) return;

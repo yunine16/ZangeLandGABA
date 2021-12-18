@@ -39,7 +39,7 @@ public class TileEnemyRoot : MonoBehaviour
             vector2.x = ((float)i % 10f)/2f;
             vector2.y = -(float)((int)i / 10)/2;
             GameObject enemy = Instantiate(prefabEnemy, transform);
-            enemy.AddComponent<TileEnemyScrpit>();
+            enemy.AddComponent<TileEnemyScript>();
             enemy.transform.position = (Vector2)transform.position + vector2;
             enemy.transform.rotation = Quaternion.identity;
             enemy.transform.GetChild(0).GetComponent<TextMesh>().text = zange[i].ToString();
@@ -62,7 +62,7 @@ public class TileEnemyRoot : MonoBehaviour
         }
         if (transform.childCount <= 0)
         {
-            shootingManager.Elminate();
+            shootingManager.Eliminate();
             Destroy(this.gameObject);
         }
     }
@@ -91,7 +91,7 @@ public class TileEnemyRoot : MonoBehaviour
 
     IEnumerator TileRot(Transform item)
     {
-        TileEnemyScrpit enemyScript = item.GetComponent<TileEnemyScrpit>();
+        TileEnemyScript enemyScript = item.GetComponent<TileEnemyScript>();
         enemyScript.RotStart();
         yield return StartCoroutine(wait(2f));
         enemyScript.TrackAttack();
