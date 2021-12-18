@@ -7,7 +7,7 @@ using TMPro;
 public class PlayerMove : MonoBehaviour
 {
     Vector2 vector;
-    float speed = 0.2f;
+    public float speed = 0.2f;
     float shotCoolDown = 0.2f;
     public GameObject prefabBullet;
     float elapsedTime;
@@ -97,7 +97,6 @@ public class PlayerMove : MonoBehaviour
             shootingManager.ReduceLeft();
             isInvincible = true;
             StartCoroutine(Invincible());
-            Debug.Log("EnemyにPlayerがHIT!");
         }
     }
 
@@ -120,7 +119,7 @@ public class PlayerMove : MonoBehaviour
         float elapsedTime = 0f;
         while (waitTime > elapsedTime)
         {
-            if (shootingManager.shootingState != ShootingManager.ShootingState.Pause) elapsedTime += Time.deltaTime;
+            if (shootingManager.shootingState == ShootingManager.ShootingState.Playing) elapsedTime += Time.deltaTime;
             yield return null;
         }
     }
