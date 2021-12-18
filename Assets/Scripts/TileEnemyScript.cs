@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Pool;
 using DG.Tweening;
 
-public class TileEnemyScrpit : MonoBehaviour
+public class TileEnemyScript : MonoBehaviour
 {
     Vector3 RotRad = new Vector3(0f, 0f, 1f);
     bool isRot,isTrackAttack;

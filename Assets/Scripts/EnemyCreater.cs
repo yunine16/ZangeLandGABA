@@ -11,7 +11,7 @@ public class EnemyCreater : MonoBehaviour
     GameObject prefabEnemy;
     Vector2 vector2;
     public GameObject TileEnemyRoot,CircleEnemyRoot;
-    ObjectPool<GameObject> objectPool;
+    [SerializeField] ShootingManager shootingManager;
 
     enum EnemyType
     {
@@ -24,22 +24,40 @@ public class EnemyCreater : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        EnemyType enemyType = (EnemyType)1;
 
-        switch (enemyType)
+    }
+
+    public IEnumerator Create(int num)
+    {
+        for (int i = 0; i <num; i++)
         {
-            case EnemyType.Tile:
-                Instantiate(TileEnemyRoot,transform.position,Quaternion.identity).GetComponent<TileEnemyRoot>().Init(zange);
-                break;
-            case EnemyType.Circle:
-                Instantiate(CircleEnemyRoot, transform.position, Quaternion.identity).GetComponent<CircleEnemyRoot>().Init(zange);
-                break;
-            default:
-                break;
+            if (shootingManager.CheckProgress(i) >= 100) yield break;
+            EnemyType enemyType = (EnemyType)(int)Random.Range(0, 2);
+            switch (enemyType)
+            {
+                case EnemyType.Tile:
+                    Instantiate(TileEnemyRoot, transform.position, Quaternion.identity).GetComponent<TileEnemyRoot>().Init(zange);
+                    break;
+                case EnemyType.Circle:
+                    Instantiate(CircleEnemyRoot, transform.position, Quaternion.identity).GetComponent<CircleEnemyRoot>().Init(zange);
+                    break;
+                default:
+                    break;
+            }
+            yield return StartCoroutine(wait(1f));
         }
         
     }
 
+    IEnumerator wait(float waitTime)
+    {
+        float elapsedTime = 0f;
+        while (waitTime > elapsedTime)
+        {
+            if (shootingManager.shootingState != ShootingManager.ShootingState.Pause) elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+    }
 
 
     // Update is called once per frame
