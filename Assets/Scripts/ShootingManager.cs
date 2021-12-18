@@ -48,7 +48,7 @@ public class ShootingManager : MonoBehaviour
         existEnemy--;
         shootingProgress += progressPerEnemy;
         stageProgressScreen.stageProgress = shootingProgress;
-        if (shootingProgress >= 100) GameCrear();
+        if (shootingProgress >= 100) { GameCrear(); return; }
         level += 0.4f;
         if (existEnemy <= 0)
         {
