@@ -6,8 +6,9 @@ using UnityEngine.UI;
 public class GrazeScript : MonoBehaviour
 {
     float grazePoint = 0;
-    float maxGraze = 10;
+    float maxGraze = 1000;
     public Slider grazeGauge;
+    [SerializeField] ShootingManager shootingManager;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +21,11 @@ public class GrazeScript : MonoBehaviour
         if(collision.tag == "Enemy")
         {
             grazePoint += 50;
+            if (grazePoint >= maxGraze)
+            {
+                shootingManager.AddLeft();
+                grazePoint = 0;
+            }
             grazeGauge.value = grazePoint;
         }
     }

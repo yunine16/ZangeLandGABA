@@ -5,10 +5,17 @@ using TMPro;
 
 public class ShootingManager : MonoBehaviour
 {
-    int enemyLeft = 10;
+    int progressPerEnemy = 8;
+    int shootingProgress = 0;
     int score = 0;
+    int playerLeft = 2;
+    int existEnemy=0;
+    float level=1;
 
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI leftText;
+    [SerializeField] StageProgressScreen stageProgressScreen;
+    [SerializeField] EnemyCreater enemyCreater;
 
     public enum ShootingState
     {
@@ -26,13 +33,28 @@ public class ShootingManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Eliminate();
     }
 
-    public void Elminate()
+    public int CheckProgress(int enemyNum)//これ以上敵を作っていいか判断
     {
-        enemyLeft--;
-        Debug.Log("enemyLeft = " + enemyLeft.ToString());
+        return shootingProgress + progressPerEnemy * enemyNum;
+    }
+
+    public void Eliminate()
+    {
+        existEnemy--;
+        shootingProgress += progressPerEnemy;
+        stageProgressScreen.stageProgress = shootingProgress;
+        if (shootingProgress >= 100) GameCrear();
+        level += 0.4f;
+        if (existEnemy <= 0)
+        {
+            int num = (int)Random.Range(1, level);
+            StartCoroutine(enemyCreater.Create(num));
+            existEnemy = num;
+        }
+        Debug.Log("shootingProgress = " + shootingProgress.ToString());
     }
 
     // Update is called once per frame
@@ -45,5 +67,28 @@ public class ShootingManager : MonoBehaviour
     {
         score += point;
         scoreText.text = "Score:" + score.ToString();
+    }
+
+    public void AddLeft()
+    {
+        playerLeft++;
+        leftText.text = "×" + playerLeft.ToString();
+    }
+
+    public void ReduceLeft()
+    {
+        if (playerLeft <= 0) { GameOver(); return; }
+        playerLeft--;
+        leftText.text = "×" + playerLeft.ToString();
+    }
+
+    void GameCrear()
+    {
+        Debug.Log("game crear");
+    }
+
+    private void GameOver()
+    {
+        Debug.Log("game over");
     }
 }

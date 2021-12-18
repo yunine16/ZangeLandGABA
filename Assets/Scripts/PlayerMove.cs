@@ -19,8 +19,6 @@ public class PlayerMove : MonoBehaviour
 
     public ShootingManager shootingManager;
     Renderer[] shipRenderers;
-
-    public TextMeshProUGUI leftText;
     int left=2;
 
     // Start is called before the first frame update
@@ -96,6 +94,7 @@ public class PlayerMove : MonoBehaviour
     {
         if(collision.tag == "Enemy" && !isInvincible)
         {
+            shootingManager.ReduceLeft();
             isInvincible = true;
             StartCoroutine(Invincible());
             Debug.Log("EnemyにPlayerがHIT!");
@@ -104,11 +103,8 @@ public class PlayerMove : MonoBehaviour
 
     IEnumerator Invincible()
     {
-        left--;
-        leftText.text = "×" + left.ToString();
         for (int i = 0; i < 4; i++)
         {
-
             shipRenderers[0].enabled = false;
             shipRenderers[1].enabled = false;
             yield return StartCoroutine(wait(0.125f));
@@ -116,7 +112,6 @@ public class PlayerMove : MonoBehaviour
             shipRenderers[1].enabled = true;
             yield return StartCoroutine(wait(0.125f));
         }
-        
         isInvincible = false;
     }
 
