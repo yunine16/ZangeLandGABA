@@ -8,6 +8,19 @@ using DG.Tweening;
 
 public class ScreenUIDirecting : MonoBehaviour
 {
+    //インスペクタで設定できるようになる
+    [System.Serializable]
+    //名前と音データをもつクラス
+    public class SEInfo
+    {
+        public int SEtiming;
+        public AudioClip audioClip;
+    }
+    [SerializeField] private SEInfo[] seInfos;
+
+    //名前指定で再生するために、名前と音を結び付けるDictionaryを作成
+    private Dictionary<int, AudioClip> SEDictionary = new Dictionary<int, AudioClip>();
+
     private AsyncOperation gameScene;
     [SerializeField] private string[] narrationTexts;
     [SerializeField] private TextMeshProUGUI textArea;
@@ -17,7 +30,14 @@ public class ScreenUIDirecting : MonoBehaviour
     private int nextText = 0;
     [SerializeField] private int enterZangeScreen = 0;
     [SerializeField] private VolControl volControl;
-    // Start is called before the first frame update
+    private void Awake()
+    {
+        //辞書に関連付け
+        foreach (SEInfo seInfo in seInfos)
+        {
+            SEDictionary.Add(seInfo.SEtiming, seInfo.audioClip);
+        }
+    }
     void Start()
     {
         StartCoroutine("ShowTextOneByOne", narrationTexts[0]);
@@ -54,6 +74,10 @@ public class ScreenUIDirecting : MonoBehaviour
                 blackAreaLeft.rectTransform.DOScaleX(1, 3).SetEase(Ease.Linear);
                 blackAreaRight.rectTransform.DOScaleX(1, 3).SetEase(Ease.Linear);
                 volControl.EnterZangeScreen();
+            }
+            if(SEDictionary.TryGetValue(nextText-1 ,out var audioClip))
+            {
+                AudioSource.PlayClipAtPoint(audioClip,Camera.main.transform.position);
             }
         }
     }

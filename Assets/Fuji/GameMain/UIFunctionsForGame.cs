@@ -100,6 +100,7 @@ public class UIFunctionsForGame : MonoBehaviour
     }
     IEnumerator FadeAndChangeScene()
     {
+        yield return new WaitForSeconds(3);
         fadeImage.DOFade(1, 1);
         soundPrefs.bgmSource.DOFade(0, 1);
         yield return new WaitForSeconds(1);
