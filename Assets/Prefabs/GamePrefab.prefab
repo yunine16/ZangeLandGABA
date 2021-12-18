@@ -461,7 +461,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grazeGauge: {fileID: 7242332368473149339}
-  shootingManager: {fileID: 0}
+  shootingManager: {fileID: 7242332366974018233}
 --- !u!1 &7242332366974018232
 GameObject:
   m_ObjectHideFlags: 0
@@ -510,6 +510,7 @@ MonoBehaviour:
   leftText: {fileID: 7242332367564114262}
   stageProgressScreen: {fileID: 0}
   enemyCreater: {fileID: 7242332368373222393}
+  uIFunctionsForGame: {fileID: 0}
   shootingState: 0
 --- !u!114 &7242332366974018235
 MonoBehaviour:
@@ -1598,7 +1599,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -1794,6 +1795,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40658b05c5daf4e2aa3dd432d10eabfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 0.2
   prefabBullet: {fileID: 8540808558181894440, guid: 81bcee0afb1f6418d9c0b62ecb901df1, type: 3}
   player: {fileID: 7242332368218898599}
   shootingManager: {fileID: 7242332366974018233}

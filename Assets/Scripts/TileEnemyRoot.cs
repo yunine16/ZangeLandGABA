@@ -109,7 +109,7 @@ public class TileEnemyRoot : MonoBehaviour
         float elapsedTime=0f;
         while (waitTime > elapsedTime)
         {
-            if (shootingManager.shootingState != ShootingManager.ShootingState.Pause) elapsedTime += Time.deltaTime;
+            if (shootingManager.shootingState == ShootingManager.ShootingState.Playing) elapsedTime += Time.deltaTime;
             yield return null;
         }
     }

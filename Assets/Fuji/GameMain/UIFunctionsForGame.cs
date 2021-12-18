@@ -9,6 +9,7 @@ public class UIFunctionsForGame : MonoBehaviour
 {
     [SerializeField] private Image pauseImage,failureImage,fadeImage,blackAreaRight,blackAreaLeft;
     [SerializeField] private Button pauseButton;
+    [SerializeField] private ShootingManager shootingManager;
     private bool pausing = false,
                  changingSEVolume = false,
                  initialized = false,
@@ -86,6 +87,7 @@ public class UIFunctionsForGame : MonoBehaviour
     public void Revenge()
     {
         failureImage.rectTransform.DOScaleY(0, 0.2f).SetEase(Ease.OutExpo);
+        shootingManager.Revenge();
     }
     public void ShrinkBlackArea()
     {
