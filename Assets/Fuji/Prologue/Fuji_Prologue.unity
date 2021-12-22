@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 851534709}
   - component: {fileID: 851534708}
+  - component: {fileID: 851534710}
   m_Layer: 0
   m_Name: ScreenDirecting
   m_TagString: Untagged
@@ -152,28 +153,76 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 076a3cafd988dad4aadc17d8957557d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seInfos:
-  - SEtiming: 7
+  narrationInfos:
+  - narrationText: "jackFes\u306F12\u6708\u3001\u6765\u6708\u304B\u30892022\u5E74!"
+    audioClip: {fileID: 0}
+    italic: 0
+  - narrationText: "\u4ECA\u5E74\u306F\u3061\u3087\u3063\u3074\u308A\u30C0\u30E1\u30C0\u30E1\u3067\u3001\\n\u79C1\u30AC\u30D0\u3063\u3068\u308B\u306A\u30FC\\n\u306A\u3093\u3066\u601D\u3063\u305F\u3068\u304D\u3082\u3042\u3063\u305F\u3063\u3051"
+    audioClip: {fileID: 0}
+    italic: 0
+  - narrationText: "\u3060\u3051\u3069\u3053\u308C\u304B\u3089\u306F\u9055\u3046\u3068\u3088"
+    audioClip: {fileID: 0}
+    italic: 0
+  - narrationText: "\u79C1\u3001\u306A\u308A\u305F\u304B\u81EA\u5206\u306B\u306A\u308B\u3063\u3061\u3083"
+    audioClip: {fileID: 0}
+    italic: 0
+  - narrationText: "\u305D\u3057\u305F\u3089\u304D\u3063\u3068\u3001\u304E\u3085\u304E\u3085\u3063\u3066\u697D\u3057\u3055\\n\u3044\u3063\u3071\u3044\u306E\u6BCE\u65E5\u304C\u5F85\u3063\u3068\u308B\u3088\u306D"
+    audioClip: {fileID: 0}
+    italic: 0
+  - narrationText: "\u3046\u3093!"
+    audioClip: {fileID: 0}
+    italic: 0
+  - narrationText: "\u3042\u3051\u307E\u3057\u3066\u304A\u3081\u3067\u3068\u3046\u3054\u3056\u3044\u307E\u3042\u3042\u3042"
+    audioClip: {fileID: 8300000, guid: a01c469296fccec48a08593820284906, type: 3}
+    italic: 0
+  - narrationText: "\u30D0\u30A2\u30A1\u30A1\u30A1\u30A2\u30F3"
+    audioClip: {fileID: 8300000, guid: 47e42339ea02648499914d2bca9a3683, type: 3}
+    italic: 0
+  - narrationText: ...
+    audioClip: {fileID: 0}
+    italic: 0
+  - narrationText: ...
+    audioClip: {fileID: 0}
+    italic: 0
+  - narrationText: "...\u76EE\u304C\u899A\u3081\u305F\u3088\u3046\u3067\u3059\u306D"
     audioClip: {fileID: 8300000, guid: 8e58bd5d1b5983f46909f7f0342873c6, type: 3}
-  - SEtiming: 10
+    italic: 1
+  - narrationText: "\u3053\u3053\u306F\u30B6\u30F3\u30B2\u30E9\u30F3\u30C9"
     audioClip: {fileID: 8300000, guid: 02ef19f6cc920c34f9ea72084b14a1fe, type: 3}
-  narrationTexts:
-  - "jackFes\u306F12\u6708\u3001\u6765\u6708\u304B\u30892022\u5E74!"
-  - "\u4ECA\u5E74\u306F\u3061\u3087\u3063\u3074\u308A\u30C0\u30E1\u30C0\u30E1\u3067\u3001\u79C1\u30AC\u30D0\u3063\u3068\u308B\u306A\u30FC\u306A\u3093\u3066\u601D\u3063\u305F\u3068\u304D\u3082\u3042\u3063\u305F\u3063\u3051"
-  - "\u3060\u3051\u3069\u3053\u308C\u304B\u3089\u306F\u9055\u3046\u3068\u3088"
-  - "\u79C1\u3001\u306A\u308A\u305F\u304B\u81EA\u5206\u306B\u306A\u308B\u3063\u3061\u3083"
-  - "\u305D\u3057\u305F\u3089\u304D\u3063\u3068\u3001\u304E\u3085\u304E\u3085\u3063\u3066\u697D\u3057\u3055\u3044\u3063\u3071\u3044\u306E\u6BCE\u65E5\u304C\u5F85\u3063\u3068\u308B\u3088\u306D"
-  - "\u3046\u3093!"
-  - "\u3042\u3051\u307E\u3057\u3066\u304A\u3081\u3067\u3068\u3046\u3054\u3056\u3044\u307E\u3042\u3042\u3042"
-  - "\u30D0\u30A2\u30A1\u30A1\u30A1\u30F3"
-  - "\u30FB\u30FB\u30FB"
-  - "\u30FB\u30FB\u30FB"
-  - "\u30B6\u30F3\u30B2\u30E9\u30F3\u30C9\u3078\u3088\u3046\u3053\u305D\u3001\u7B49"
+    italic: 1
+  - narrationText: "\u3042\u306A\u305F\u306F\u4ECA\u3001\u6B7B\u306E\u904B\u547D\u304B\u3089\u9003\u308C\u308B\\n\u30C1\u30E3\u30F3\u30B9\u3092\u4E0E\u3048\u3089\u308C\u3001\u751F\u6B7B\u306E\u72ED\u9593\u306B\u3044\u307E\u3059"
+    audioClip: {fileID: 8300000, guid: 8e58bd5d1b5983f46909f7f0342873c6, type: 3}
+    italic: 1
+  - narrationText: "\u70BA\u3059\u3079\u304D\u3053\u3068\u306F\u5358\u7D14\u660E\u5FEB"
+    audioClip: {fileID: 8300000, guid: 483f81d4cbe9ca547a0ef896ad76cd74, type: 3}
+    italic: 1
+  - narrationText: "\u3053\u308C\u307E\u3067\u306E\u81EA\u5206\u3092\u632F\u308A\u8FD4\u308A\u3001\\n\u30B6\u30F3\u30B2\u3059\u308B\u306E\u3067\u3059"
+    audioClip: {fileID: 8300000, guid: 8e58bd5d1b5983f46909f7f0342873c6, type: 3}
+    italic: 1
+  - narrationText: "\u3055\u3082\u306A\u304F\u3070\u3001\u30C8\u30E9\u30C3\u30AF\u306B\u3072\u304B\u308C\u305F\u3042\u306A\u305F\u306F\\n\u3053\u306E\u307E\u307E\u982D\u3092\u5F37\u6253\u3057\u3001\u6B7B\u3093\u3067\u3057\u307E\u3044\u307E\u3059"
+    audioClip: {fileID: 8300000, guid: 02ef19f6cc920c34f9ea72084b14a1fe, type: 3}
+    italic: 1
+  - narrationText: "\u3055\u3041\u76EE\u3092\u9589\u3058\u3001\u904E\u3061\u3092\u601D\u3044\u8FD4\u3059\u306E\u3067\u3059"
+    audioClip: {fileID: 8300000, guid: 483f81d4cbe9ca547a0ef896ad76cd74, type: 3}
+    italic: 1
+  - narrationText: "\u53CD\u7701\u3057\u3001\u8A31\u3057\u3092\u8ACB\u3044\u3001\u4E57\u308A\u8D8A\u3048\u308B\u306E\u3067\u3059"
+    audioClip: {fileID: 8300000, guid: 483f81d4cbe9ca547a0ef896ad76cd74, type: 3}
+    italic: 1
+  - narrationText: "\u3053\u306E\u307E\u307E\u6B7B\u306C\u306A\u3093\u3066\u5ACC\u3060\\n1\u5E74\u304C\u59CB\u307E\u3063\u305F\u3070\u304B\u308A\u306A\u306E\u306B!"
+    audioClip: {fileID: 0}
+    italic: 0
+  - narrationText: "\u8AB0\u3060\u304B\u308F\u304B\u3089\u306A\u3044\u59EB\u7684\u306A\u4EBA\u7269\u306E\u58F0\u306B\\n\u8A00\u308F\u308C\u308B\u307E\u307E\u3001\u79C1\u306F\u76EE\u3092\u9589\u3058\u305F"
+    audioClip: {fileID: 0}
+    italic: 0
+  fadeScreen: {fileID: 934105411}
   textArea: {fileID: 1457626916713634517}
   blackAreaRight: {fileID: 1457626916682175736}
   blackAreaLeft: {fileID: 1457626916997270188}
   speed: 0.1
-  enterZangeScreen: 9
+  enterZangeScreen: 7
+  BGMs:
+  - {fileID: 8300000, guid: 4168048ff7e4d9e4cb58fcefd7108977, type: 3}
+  - {fileID: 8300000, guid: a6e9656a8c29f5f4cada4358dffdeddd, type: 3}
   volControl: {fileID: 2009800150}
 --- !u!4 &851534709
 Transform:
@@ -189,6 +238,177 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &851534710
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 851534707}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 0
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!1 &934105409
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 934105410}
+  - component: {fileID: 934105412}
+  - component: {fileID: 934105411}
+  m_Layer: 5
+  m_Name: FadeScreen
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &934105410
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 934105409}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1457626916884763631}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &934105411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 934105409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &934105412
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 934105409}
+  m_CullTransparentMesh: 1
 --- !u!1 &1777547941
 GameObject:
   m_ObjectHideFlags: 0
@@ -518,8 +738,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -98.53}
-  m_SizeDelta: {x: -320, y: -417.77}
+  m_AnchoredPosition: {x: 0, y: -75}
+  m_SizeDelta: {x: -320, y: -450}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1457626916713634517
 MonoBehaviour:
@@ -541,7 +761,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u30CA\u30EC\u30FC\u30B7\u30E7\u30F3\u3093\u3093\u3093\u3093\u3093\u3093\u3093\u3093\u3093\u3093\u3093\u3093\u3093\u3093\u3093"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1a6c8ed1b38f51641a82318b44608192, type: 2}
   m_sharedMaterial: {fileID: 4895967520485838283, guid: 1a6c8ed1b38f51641a82318b44608192, type: 2}
@@ -568,8 +788,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 60
+  m_fontSize: 55
+  m_fontSizeBase: 55
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -723,6 +943,7 @@ RectTransform:
   - {fileID: 1457626916682175739}
   - {fileID: 1457626916997270191}
   - {fileID: 1457626916713634516}
+  - {fileID: 934105410}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
