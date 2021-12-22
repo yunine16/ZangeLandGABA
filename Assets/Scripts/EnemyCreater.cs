@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.Linq;
+using UnityEngine.Pool;
 
 public class EnemyCreater : MonoBehaviour
 {
@@ -15,6 +16,10 @@ public class EnemyCreater : MonoBehaviour
     public GameObject TileEnemyRoot,CircleEnemyRoot,SnakeEnemyRoot;
     [SerializeField] ShootingManager shootingManager;
     GetRandomZange getRandomZange;
+
+    ObjectPool<GameObject> objectPool;
+    [SerializeField]GameObject prefabHitEffect;
+
 
     enum EnemyType
     {
@@ -33,6 +38,39 @@ public class EnemyCreater : MonoBehaviour
         indexes.Add(new int[] { 1, 2, 3, 4 });
         getRandomZange = GetComponent<GetRandomZange>();
         //zange = getRandomZange.GetZange();
+
+        // オブジェクトプールを作成
+        objectPool = new ObjectPool<GameObject>(() =>
+        {
+            // 生成処理
+            var effect = Instantiate(prefabHitEffect);
+            var pooled = effect.GetComponent<EnemyHitEffect>();
+            pooled.objectPool = objectPool;
+            return effect;
+        },
+        target =>
+        {
+            // 再利用処理
+            target.SetActive(true);
+        },
+        target =>
+        {
+            // プールに戻す処理
+            target.SetActive(false);
+        },
+        target =>
+        {
+            // プールの許容量を超えた場合の破棄処理
+            Destroy(target);
+        }, true, 100, 1000);
+    }
+
+    public void Effect(Vector3 vector3)
+    {
+        GameObject effect = objectPool.Get();
+        effect.transform.position = vector3;
+        effect.transform.rotation = Quaternion.identity;
+        effect.GetComponent<EnemyHitEffect>().Play();
     }
 
     public IEnumerator Create(int num)

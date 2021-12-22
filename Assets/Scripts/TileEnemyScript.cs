@@ -12,6 +12,9 @@ public class TileEnemyScript : MonoBehaviour
     float speed = 8;
     float rotSpeed = 1440;
 
+    public ObjectPool<GameObject> objectPool;
+    EnemyCreater enemyCreater;
+
     ShootingManager shootingManager;
 
     Color color;
@@ -20,6 +23,7 @@ public class TileEnemyScript : MonoBehaviour
     {
         shootingManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<ShootingManager>();
         ColorUtility.TryParseHtmlString("#7B5234", out color);
+        enemyCreater = GameObject.FindGameObjectWithTag("EnemyCreater").GetComponent<EnemyCreater>();
     }
 
     private void Update()
@@ -55,4 +59,8 @@ public class TileEnemyScript : MonoBehaviour
         if (collision.tag == "Wall") Destroy(gameObject);
     }
 
+    private void OnDestroy()
+    {
+        enemyCreater.Effect(transform.position);
+    }
 }

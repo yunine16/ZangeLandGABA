@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.Pool;
 
 public class SnakeEnemyScript : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class SnakeEnemyScript : MonoBehaviour
     bool isAttack;
     float speed = 3;
 
+    public ObjectPool<GameObject> objectPool;
+    EnemyCreater enemyCreater;
+
     Color color;
 
     // Start is called before the first frame update
@@ -17,6 +21,7 @@ public class SnakeEnemyScript : MonoBehaviour
     {
         shootingManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<ShootingManager>();
         ColorUtility.TryParseHtmlString("#7B5234", out color);
+        enemyCreater = GameObject.FindGameObjectWithTag("EnemyCreater").GetComponent<EnemyCreater>();
     }
 
     // Update is called once per frame
@@ -47,5 +52,11 @@ public class SnakeEnemyScript : MonoBehaviour
         isAttack = true;
         transform.tag = "Enemy";
         transform.GetChild(0).GetComponent<TextMesh>().color = color;
+    }
+
+    private void OnDestroy()
+    {
+        Debug.Log(transform.position);
+        enemyCreater.Effect(transform.position);
     }
 }
