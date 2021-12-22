@@ -14,9 +14,12 @@ public class TileEnemyScript : MonoBehaviour
 
     ShootingManager shootingManager;
 
+    Color color;
+
     private void Start()
     {
         shootingManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<ShootingManager>();
+        ColorUtility.TryParseHtmlString("#7B5234", out color);
     }
 
     private void Update()
@@ -43,6 +46,7 @@ public class TileEnemyScript : MonoBehaviour
         moveVec = (player.transform.position - transform.position).normalized;
         isTrackAttack = true;
         gameObject.tag = "Enemy";
+        transform.GetChild(0).GetComponent<TextMesh>().color = color;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

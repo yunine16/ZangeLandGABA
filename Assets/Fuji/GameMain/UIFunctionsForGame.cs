@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class UIFunctionsForGame : MonoBehaviour
 {
-    [SerializeField] private Image pauseImage,failureImage,fadeImage,blackAreaRight,blackAreaLeft;
+    [SerializeField] private Image pauseImage,failureImage,fadeImage,blackAreaRight,blackAreaLeft,crackImage;
     [SerializeField] private Button pauseButton;
     [SerializeField] private ShootingManager shootingManager;
     private bool pausing = false,
@@ -16,10 +16,21 @@ public class UIFunctionsForGame : MonoBehaviour
                  loadStarted;
     private AsyncOperation clearScene;
     private SoundPrefs soundPrefs;
+    private AudioSource myAudioSource;
+    [SerializeField] private Material crackMat;
     private void Start()
     {
+        myAudioSource = GetComponent<AudioSource>();
         soundPrefs = GetComponent<SoundPrefs>();
+        StartCoroutine("FadeIn");
         StartCoroutine("PreloadClearScene");
+    }
+    IEnumerator FadeIn()
+    {
+        yield return new WaitForSeconds(0.8f);
+        fadeImage.DOFade(0, 1);
+        yield return new WaitForSeconds(1);
+        myAudioSource.Play();
     }
     IEnumerator PreloadClearScene()
     {
@@ -57,7 +68,7 @@ public class UIFunctionsForGame : MonoBehaviour
     public void SetBGMVolume()
     {
         PlayerPrefs.SetFloat(SoundPrefs.bgmVolumeKey, soundPrefs.bgmSlider.value);
-        soundPrefs.bgmSource.DOFade(PlayerPrefs.GetFloat(SoundPrefs.bgmVolumeKey), 0.2f);
+        myAudioSource.DOFade(PlayerPrefs.GetFloat(SoundPrefs.bgmVolumeKey), 0.2f);
     }
     public void SetSEVolume()
     {
@@ -83,11 +94,14 @@ public class UIFunctionsForGame : MonoBehaviour
     public void Failure()
     {
         failureImage.rectTransform.DOScaleY(1, 0.2f).SetEase(Ease.OutExpo);
+        crackMat.SetInt(crackMat.shader.GetPropertyNameId(1), Random.Range(20, 40));
+        crackImage.DOFade(1, 0.1f);
     }
     public void Revenge()
     {
         failureImage.rectTransform.DOScaleY(0, 0.2f).SetEase(Ease.OutExpo);
         shootingManager.Revenge();
+        crackImage.DOFade(0, 0.5f);
     }
     public void ShrinkBlackArea()
     {
@@ -102,7 +116,7 @@ public class UIFunctionsForGame : MonoBehaviour
     {
         yield return new WaitForSeconds(3);
         fadeImage.DOFade(1, 1);
-        soundPrefs.bgmSource.DOFade(0, 1);
+        myAudioSource.DOFade(0, 1);
         yield return new WaitForSeconds(1);
         clearScene.allowSceneActivation = true;
     }

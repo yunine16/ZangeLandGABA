@@ -73,8 +73,8 @@ public class PlayerMove : MonoBehaviour
         //クリックで発射
         if (Input.GetMouseButton(0) && elapsedTime >= shotCoolDown)
         {
-            Shot(rotation);
             elapsedTime = 0;
+            Shot(rotation);
         }
         if (elapsedTime < shotCoolDown) elapsedTime += Time.deltaTime;
     }

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c11adca5f26e5e9428941c92458e119f, type: 3}
+  m_Name: Epilogue
+  m_EditorClassIdentifier: 
+  SEName:
+  - ShowingText
+  - Click
+  SEClip:
+  - {fileID: 8300000, guid: 3ad1d8f8af824a0469b667c5c0ea2cfb, type: 3}
+  - {fileID: 8300000, guid: 4614b54e95fa7b24f97a5824c1d9ac7c, type: 3}

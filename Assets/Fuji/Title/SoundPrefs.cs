@@ -29,6 +29,9 @@ public class SoundPrefs : MonoBehaviour
         bgmSlider.value = PlayerPrefs.GetFloat(bgmVolumeKey);
         seSlider.value = PlayerPrefs.GetFloat(seVolumeKey);
         yield return null;
-        bgmSource.PlayDelayed(0.2f);
+        if (bgmSource != null)
+        {
+            bgmSource.PlayDelayed(0.2f);
+        }
     }
 }

@@ -17,8 +17,10 @@ MonoBehaviour:
   - MouseOver
   - CreditButton
   - StartButton
+  - BackButton
   SEClip:
   - {fileID: 8300000, guid: 8e58bd5d1b5983f46909f7f0342873c6, type: 3}
+  - {fileID: 8300000, guid: d07cd57f672619a419481e4f5a788b32, type: 3}
+  - {fileID: 8300000, guid: a1e116b934f3c944d9dc3bd90315b729, type: 3}
   - {fileID: 8300000, guid: 02ef19f6cc920c34f9ea72084b14a1fe, type: 3}
   - {fileID: 8300000, guid: 483f81d4cbe9ca547a0ef896ad76cd74, type: 3}
-  - {fileID: 8300000, guid: a1e116b934f3c944d9dc3bd90315b729, type: 3}

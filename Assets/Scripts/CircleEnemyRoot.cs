@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
-using System;
 using DG.Tweening;
 
 public class CircleEnemyRoot : MonoBehaviour
@@ -18,6 +16,8 @@ public class CircleEnemyRoot : MonoBehaviour
 
     float speed=2, rotSpeed=100;
     Vector3 rotRad = new Vector3(0f, 0f, 1f);
+
+    Color color;
 
     public enum CircleState
     {
@@ -35,6 +35,7 @@ public class CircleEnemyRoot : MonoBehaviour
         tweener = transform.DOMoveY(transform.position.y -3f, 3f);
         childTweens = new List<Tweener>();
         StartCoroutine(AppearWait());
+        ColorUtility.TryParseHtmlString("#7B5234", out color);
     }
 
     public void Init(string zange)
@@ -96,6 +97,7 @@ public class CircleEnemyRoot : MonoBehaviour
         for (int i = 0; i < transform.childCount; i++)
         {
             transform.GetChild(i).tag = "Enemy";
+            transform.GetChild(i).GetChild(0).GetComponent<TextMesh>().color = color;
         }
     }
 

@@ -23,8 +23,10 @@ public class StageProgressScreen : MonoBehaviour
         vProfile.TryGet(out vignette);
         vProfile.TryGet(out filmGrain);
         vProfile.TryGet(out colorAdjustments);
-        initialVintensity = vignette.intensity.value;
-        initialFintensity = filmGrain.intensity.value;
+        vignette.intensity.value = 0.4f;
+        filmGrain.intensity.value = 0.7f;
+        initialVintensity = 0.4f;
+        initialFintensity = 0.7f;
     }
     private void Update()
     {
