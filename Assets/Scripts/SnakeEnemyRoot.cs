@@ -46,6 +46,7 @@ public class SnakeEnemyRoot : MonoBehaviour
         snakes = new GameObject[snakeLength];
         for (int i = 0; i < zange.Length; i++)
         {
+            if (zange[i].ToString() == " " || zange[i].ToString() == "　") continue;
             vector.x = ((float)i % 10f) / 2f - 2.5f;
             vector.y = -(float)((int)i / 10) / 2;
             GameObject enemy = Instantiate(prefabEnemy, transform);
@@ -102,7 +103,7 @@ public class SnakeEnemyRoot : MonoBehaviour
             //目的地の設定
             vector2s.Insert(0, (Vector2)leaderSnake.transform.position);
             if (vector2s.Count > snakeLength) vector2s.RemoveAt(vector2s.Count - 1);
-            snakes[moveSnake-1].GetComponent<SnakeEnemyScript>().AttackStart();
+            if (snakes[moveSnake-1] != null) snakes[moveSnake-1].GetComponent<SnakeEnemyScript>().AttackStart();
             for (int i = 0; i < moveSnake; i++)
             {
                 if (snakes[i] == null) continue;

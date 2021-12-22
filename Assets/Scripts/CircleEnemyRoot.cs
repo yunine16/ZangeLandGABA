@@ -42,6 +42,7 @@ public class CircleEnemyRoot : MonoBehaviour
     {
         for (int i = 0; i < zange.Length; i++)
         {
+            if (zange[i].ToString() == " " || zange[i].ToString() == "　") continue;
             vector.x = ((float)i % 10f) / 2f - 2.5f;
             vector.y = -(float)((int)i / 10)/2;
             GameObject enemy = Instantiate(prefabEnemy, transform);
