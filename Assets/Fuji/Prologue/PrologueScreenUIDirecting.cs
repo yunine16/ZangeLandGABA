@@ -74,7 +74,7 @@ public class PrologueScreenUIDirecting : MonoBehaviour
                 }
                 if (narrationInfos[nextText].audioClip != null)
                 {
-                    AudioSource.PlayClipAtPoint(narrationInfos[nextText].audioClip, Camera.main.transform.position);
+                    AudioSource.PlayClipAtPoint(narrationInfos[nextText].audioClip, Camera.main.transform.position,PlayerPrefs.GetFloat(SoundPrefs.seVolumeKey));
                 }
                 StartCoroutine("ShowTextOneByOne", narrationInfos[nextText].narrationText);
                 nextText++;

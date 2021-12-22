@@ -5070,9 +5070,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: DebugOnlyButton, Assembly-CSharp
-        m_MethodName: TestButton
+      - m_Target: {fileID: 295026801}
+        m_TargetAssemblyTypeName: UIFunctionsForGame, Assembly-CSharp
+        m_MethodName: TitleButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -15143,6 +15143,7 @@ MonoBehaviour:
   zangeInputField: {fileID: 809710087}
   sendButton: {fileID: 2094324033}
   gameUIscript: {fileID: 295026801}
+  failureScreen: {fileID: 1574824050}
 --- !u!4 &295026798
 Transform:
   m_ObjectHideFlags: 0
@@ -15189,7 +15190,6 @@ MonoBehaviour:
   blackAreaRight: {fileID: 1541539086}
   blackAreaLeft: {fileID: 648682330}
   crackImage: {fileID: 1053925382}
-  pauseButton: {fileID: 0}
   shootingManager: {fileID: 7702579530067593710}
   crackMat: {fileID: 2100000, guid: 0e8a6256d220d31479ab370dd142d2a2, type: 2}
 --- !u!82 &295026802
@@ -20670,7 +20670,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -30441,7 +30441,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -35139,7 +35139,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 753048102}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.96, y: 2.04, z: 0}
+  m_LocalPosition: {x: 5.48, y: 6.17, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 713303082}
@@ -35668,7 +35668,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &904069817
 RectTransform:
   m_ObjectHideFlags: 0
@@ -58647,6 +58647,14 @@ PrefabInstance:
       propertyPath: addLifeEffectParent
       value: 
       objectReference: {fileID: 731656340}
+    - target: {fileID: 7242332366974018233, guid: bbd169ac82a91354ebd8130ed59e9ba8, type: 3}
+      propertyPath: crackMat
+      value: 
+      objectReference: {fileID: 2100000, guid: 0e8a6256d220d31479ab370dd142d2a2, type: 2}
+    - target: {fileID: 7242332366974018233, guid: bbd169ac82a91354ebd8130ed59e9ba8, type: 3}
+      propertyPath: crackImage
+      value: 
+      objectReference: {fileID: 1053925382}
     - target: {fileID: 7242332366974018233, guid: bbd169ac82a91354ebd8130ed59e9ba8, type: 3}
       propertyPath: KilledEffectParent
       value: 

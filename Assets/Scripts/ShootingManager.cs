@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 public class ShootingManager : MonoBehaviour
 {
@@ -14,6 +16,8 @@ public class ShootingManager : MonoBehaviour
 
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI leftText;
+    [SerializeField] private Image crackImage;
+    [SerializeField] private Material crackMat;
     [SerializeField] StageProgressScreen stageProgressScreen;
     [SerializeField] EnemyCreater enemyCreater;
     [SerializeField] UIFunctionsForGame uIFunctionsForGame;
@@ -120,6 +124,8 @@ public class ShootingManager : MonoBehaviour
 
     private void GameOver()
     {
+        crackMat.SetInt(crackMat.shader.GetPropertyNameId(1), Random.Range(20, 40));
+        crackImage.DOFade(1, 0.1f);
         KilledEffectParent.Play(true);
         SEManager.Instance.PlaySE("PlayerDead");
         ChangeState(ShootingState.Failure);

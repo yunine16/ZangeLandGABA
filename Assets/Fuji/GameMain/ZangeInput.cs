@@ -12,6 +12,7 @@ public class ZangeInput : MonoBehaviour
     [SerializeField] private TMP_InputField zangeInputField = null;
     [SerializeField] private Button sendButton = null;
     [SerializeField] private UIFunctionsForGame gameUIscript;
+    [SerializeField] private Image failureScreen;
 
     //zanges検索のために、NCMBQuery作成
     NCMBQuery<NCMBObject> zangesQuery = new NCMBQuery<NCMBObject>("Zange");
@@ -24,14 +25,19 @@ public class ZangeInput : MonoBehaviour
     //入力欄が更新されるたび実行、Null、入力無し、スペースのみのいずれかのとき送信ボタンが押せない。
     public void OnInputChange()
     {
-        sendButton.interactable = !(string.IsNullOrWhiteSpace(zangeInputField.text)
-                                 || string.IsNullOrEmpty(zangeInputField.text));
-        int typeSENumber = Random.Range(0, 5);
-        SEManager.Instance.PlaySE("Zange" + typeSENumber);
+        if (failureScreen.rectTransform.localScale.y != 0)
+        {
+            sendButton.interactable = !(string.IsNullOrWhiteSpace(zangeInputField.text)
+                                     || string.IsNullOrEmpty(zangeInputField.text));
+            int typeSENumber = Random.Range(0, 5);
+            SEManager.Instance.PlaySE("Zange" + typeSENumber);
+        }
     }
 
     public void sendToNCMB()
     {
+        int typeSENumber = Random.Range(0, 5);
+        SEManager.Instance.PlaySE("Zange" + typeSENumber);
         //検索条件設定。zangeの値が入力欄なもの
         zangesQuery.WhereEqualTo("zangeText", zangeInputField.text);
         //一致するNCMBオブジェクトをリスト化

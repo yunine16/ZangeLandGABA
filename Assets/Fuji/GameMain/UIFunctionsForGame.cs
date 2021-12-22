@@ -8,13 +8,12 @@ using UnityEngine.SceneManagement;
 public class UIFunctionsForGame : MonoBehaviour
 {
     [SerializeField] private Image pauseImage,failureImage,fadeBlack,fadeWhite,blackAreaRight,blackAreaLeft,crackImage;
-    [SerializeField] private Button pauseButton;
     [SerializeField] private ShootingManager shootingManager;
     private bool pausing = false,
                  changingSEVolume = false,
                  initialized = false,
                  loadStarted;
-    private AsyncOperation clearScene;
+    private AsyncOperation clearScene,titleScene;
     private SoundPrefs soundPrefs;
     private AudioSource myAudioSource;
     [SerializeField] private Material crackMat;
@@ -38,6 +37,8 @@ public class UIFunctionsForGame : MonoBehaviour
         {
             clearScene = SceneManager.LoadSceneAsync("Fuji_Clear");
             clearScene.allowSceneActivation = false;
+            titleScene = SceneManager.LoadSceneAsync("Fuji_Title");
+            titleScene.allowSceneActivation = false;
             loadStarted = true;
         }
         return null;
@@ -80,22 +81,28 @@ public class UIFunctionsForGame : MonoBehaviour
         SEManager.Instance.PlaySE("PauseButton");
         if (pausing)
         {
-            pauseButton.transform.DOScale(Vector3.one, 0.2f).SetEase(Ease.OutExpo);
             pauseImage.rectTransform.DOScaleY(0, 0.2f).SetEase(Ease.OutExpo);
             pausing = false;
         }
         else
         {
-            pauseButton.transform.DOScale(Vector3.zero, 0.2f).SetEase(Ease.OutExpo);
             pauseImage.rectTransform.DOScaleY(1, 0.2f).SetEase(Ease.OutExpo);
             pausing = true;
         }
     }
+    public void TitleButton()
+    {
+        fadeBlack.DOFade(1, 1);
+        StartCoroutine("AllowChangeSceneToTitle");
+    }
+    IEnumerator AllowChangeSceneToTitle()
+    {
+        yield return new WaitForSeconds(1);
+        titleScene.allowSceneActivation = true;
+    }
     public void Failure()
     {
         failureImage.rectTransform.DOScaleY(1, 0.2f).SetEase(Ease.OutExpo);
-        crackMat.SetInt(crackMat.shader.GetPropertyNameId(1), Random.Range(20, 40));
-        crackImage.DOFade(1, 0.1f);
     }
     public void Revenge()
     {
@@ -115,7 +122,8 @@ public class UIFunctionsForGame : MonoBehaviour
     IEnumerator FadeAndChangeScene()
     {
         yield return new WaitForSeconds(3);
-        fadeWhite.DOFade(1, 1);
+        fadeWhite.DOFade(1, 2);
+        SEManager.Instance.PlaySE("EndLight");
         myAudioSource.DOFade(0, 1);
         yield return new WaitForSeconds(1);
         clearScene.allowSceneActivation = true;
