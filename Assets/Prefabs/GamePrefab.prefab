@@ -20993,7 +20993,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1000
   m_WholeNumbers: 0
-  m_Value: 444
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -21119,7 +21119,6 @@ GameObject:
   - component: {fileID: 7242332368549710467}
   - component: {fileID: 7242332368549710479}
   - component: {fileID: 7242332368549710478}
-  - component: {fileID: 7242332368549710472}
   m_Layer: 0
   m_Name: Ship
   m_TagString: Player
@@ -21196,19 +21195,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &7242332368549710472
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7242332368549710466}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9488293e08c9214449248ce4484db75e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  seData: {fileID: 11400000, guid: 144722701120ec042a80083d44aa4236, type: 2}
 --- !u!1 &7242332368726000190
 GameObject:
   m_ObjectHideFlags: 0
@@ -21310,7 +21296,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Score:100
+  m_text: Score:0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1a6c8ed1b38f51641a82318b44608192, type: 2}
   m_sharedMaterial: {fileID: 4895967520485838283, guid: 1a6c8ed1b38f51641a82318b44608192, type: 2}

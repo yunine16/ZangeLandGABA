@@ -12,7 +12,7 @@ public class GetRandomZange : MonoBehaviour
     bool initialized = false;
     private string resultString = "init";
 
-    private void Awake()
+    private void Start()
     {
         zangesQuery.FindAsync((List<NCMBObject> allZanges, NCMBException e) =>
         {
