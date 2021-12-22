@@ -26,8 +26,8 @@ public class ZangeInput : MonoBehaviour
     {
         sendButton.interactable = !(string.IsNullOrWhiteSpace(zangeInputField.text)
                                  || string.IsNullOrEmpty(zangeInputField.text));
-        string typeSENumber = Random.Range(0, 4).ToString();
-        SEManager.Instance.PlaySE("Typing" + typeSENumber);
+        int typeSENumber = Random.Range(0, 5);
+        SEManager.Instance.PlaySE("Zange" + typeSENumber);
     }
 
     public void sendToNCMB()

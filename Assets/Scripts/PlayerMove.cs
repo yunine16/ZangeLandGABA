@@ -12,6 +12,7 @@ public class PlayerMove : MonoBehaviour
     public GameObject prefabBullet;
     float elapsedTime;
     ObjectPool<GameObject> objectPool;
+    [SerializeField] private ParticleSystem hitEffectParent,shotEffectParent;
     [SerializeField]
     GameObject player;
 
@@ -81,19 +82,21 @@ public class PlayerMove : MonoBehaviour
 
     void Shot(Quaternion rot)
     {
+        shotEffectParent.Play(true);
+        SEManager.Instance.PlaySE("PlayerShot");
         GameObject bullet = objectPool.Get();
         bullet.transform.position = transform.position;
         bullet.transform.rotation = rot;
         //GameObject bullet = Instantiate(prefabBullet, transform.position, rot, null);
         bullet.GetComponent<BulletScript>().SetDirection(rot);
-        string typeSENumber = Random.Range(0, 4).ToString();
-        SEManager.Instance.PlaySE("Typing" + typeSENumber);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "Enemy" && !isInvincible)
         {
+            hitEffectParent.Play(true);
+            SEManager.Instance.PlaySE("PlayerHit");
             shootingManager.ReduceLeft();
             isInvincible = true;
             StartCoroutine(Invincible());

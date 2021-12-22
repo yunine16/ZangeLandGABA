@@ -17,6 +17,7 @@ public class ShootingManager : MonoBehaviour
     [SerializeField] StageProgressScreen stageProgressScreen;
     [SerializeField] EnemyCreater enemyCreater;
     [SerializeField] UIFunctionsForGame uIFunctionsForGame;
+    [SerializeField] private ParticleSystem KilledEffectParent,RespawnEffectParent;
 
     public enum ShootingState
     {
@@ -103,6 +104,8 @@ public class ShootingManager : MonoBehaviour
 
     public void Revenge()
     {
+        RespawnEffectParent.Play(true);
+        SEManager.Instance.PlaySE("PlayerRespawn");
         ChangeState(ShootingState.Playing);
         for (int i = 0; i < 3; i++)
         {
@@ -112,6 +115,8 @@ public class ShootingManager : MonoBehaviour
 
     private void GameOver()
     {
+        KilledEffectParent.Play(true);
+        SEManager.Instance.PlaySE("PlayerDead");
         ChangeState(ShootingState.Failure);
         uIFunctionsForGame.Failure();
     }
