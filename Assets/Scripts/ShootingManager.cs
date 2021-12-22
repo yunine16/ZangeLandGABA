@@ -50,6 +50,7 @@ public class ShootingManager : MonoBehaviour
         stageProgressScreen.stageProgress = shootingProgress;
         if (shootingProgress >= 100) { GameCrear(); return; }
         level += 0.4f;
+        if (level > 4) level = 4;
         if (existEnemy <= 0)
         {
             int num = (int)Random.Range(1, level);

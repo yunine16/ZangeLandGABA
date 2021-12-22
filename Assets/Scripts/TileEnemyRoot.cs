@@ -15,6 +15,7 @@ public class TileEnemyRoot : MonoBehaviour
     Tweener tweener;
     bool isTweenMove;
 
+
     public enum TileState
     {
         Appear,
@@ -36,7 +37,7 @@ public class TileEnemyRoot : MonoBehaviour
     {
         for (int i = 0; i < zange.Length; i++)
         {
-            vector.x = ((float)i % 10f)/2f;
+            vector.x = ((float)i % 10f) / 2f - 2.5f;
             vector.y = -(float)((int)i / 10)/2;
             GameObject enemy = Instantiate(prefabEnemy, transform);
             enemy.AddComponent<TileEnemyScript>();

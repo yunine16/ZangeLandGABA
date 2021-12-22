@@ -20855,6 +20855,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7242332368373222392}
   - component: {fileID: 7242332368373222393}
+  - component: {fileID: 7465537093818626487}
   m_Layer: 0
   m_Name: EnemyCreater
   m_TagString: Untagged
@@ -20891,7 +20892,21 @@ MonoBehaviour:
   prefabEnemy: {fileID: 2988394337825255120, guid: 81e1cd019139d4eb1ac73efc91148dcc, type: 3}
   TileEnemyRoot: {fileID: 838256881870574260, guid: 6d20ebcdf1cab43a3b6e0d832c7a3bd4, type: 3}
   CircleEnemyRoot: {fileID: 8236478963856786787, guid: 95c2b703d78dc4987b9399f1a3561c17, type: 3}
+  SnakeEnemyRoot: {fileID: 1986082423237573594, guid: ba8ebccb5c2e746f2a0ca180f082e844, type: 3}
   shootingManager: {fileID: 7242332366974018233}
+--- !u!114 &7465537093818626487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7242332368373222399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62bb1203347af9344b62433db2a3642f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  infoText: {fileID: 0}
 --- !u!1 &7242332368473149337
 GameObject:
   m_ObjectHideFlags: 0
