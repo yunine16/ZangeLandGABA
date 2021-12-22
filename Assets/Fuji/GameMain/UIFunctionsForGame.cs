@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class UIFunctionsForGame : MonoBehaviour
 {
-    [SerializeField] private Image pauseImage,failureImage,fadeImage,blackAreaRight,blackAreaLeft,crackImage;
+    [SerializeField] private Image pauseImage,failureImage,fadeBlack,fadeWhite,blackAreaRight,blackAreaLeft,crackImage;
     [SerializeField] private Button pauseButton;
     [SerializeField] private ShootingManager shootingManager;
     private bool pausing = false,
@@ -28,7 +28,7 @@ public class UIFunctionsForGame : MonoBehaviour
     IEnumerator FadeIn()
     {
         yield return new WaitForSeconds(0.8f);
-        fadeImage.DOFade(0, 1);
+        fadeBlack.DOFade(0, 1);
         yield return new WaitForSeconds(1);
         myAudioSource.Play();
     }
@@ -115,7 +115,7 @@ public class UIFunctionsForGame : MonoBehaviour
     IEnumerator FadeAndChangeScene()
     {
         yield return new WaitForSeconds(3);
-        fadeImage.DOFade(1, 1);
+        fadeWhite.DOFade(1, 1);
         myAudioSource.DOFade(0, 1);
         yield return new WaitForSeconds(1);
         clearScene.allowSceneActivation = true;

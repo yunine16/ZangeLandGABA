@@ -17,9 +17,11 @@ public class ShootingManager : MonoBehaviour
     [SerializeField] StageProgressScreen stageProgressScreen;
     [SerializeField] EnemyCreater enemyCreater;
     [SerializeField] UIFunctionsForGame uIFunctionsForGame;
+    [SerializeField] private ParticleSystem KilledEffectParent,RespawnEffectParent;
 
     public enum ShootingState
     {
+        Start,
         Playing,
         Pause,
         Failure
@@ -35,7 +37,7 @@ public class ShootingManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Eliminate();
+        StartCoroutine(StartZange());
     }
 
     public int CheckProgress(int enemyNum)//これ以上敵を作っていいか判断
@@ -51,13 +53,23 @@ public class ShootingManager : MonoBehaviour
         if (shootingProgress >= 100) { GameCrear(); return; }
         level += 0.4f;
         if (level > 4) level = 4;
-        if (existEnemy <= 0)
-        {
-            int num = (int)Random.Range(1, level);
-            StartCoroutine(enemyCreater.Create(num));
-            existEnemy = num;
-        }
+        if (existEnemy <= 0) Make();
         Debug.Log("shootingProgress = " + shootingProgress.ToString());
+    }
+
+    void Make()
+    {
+        int num = (int)Random.Range(1, level);
+        StartCoroutine(enemyCreater.Create(num));
+        existEnemy = num;
+    }
+
+
+    IEnumerator StartZange()
+    {
+        yield return new WaitForSeconds(3f);
+        ChangeState(ShootingState.Playing);
+        Make();
     }
 
     // Update is called once per frame
@@ -92,6 +104,8 @@ public class ShootingManager : MonoBehaviour
 
     public void Revenge()
     {
+        RespawnEffectParent.Play(true);
+        SEManager.Instance.PlaySE("PlayerRespawn");
         ChangeState(ShootingState.Playing);
         for (int i = 0; i < 3; i++)
         {
@@ -101,6 +115,8 @@ public class ShootingManager : MonoBehaviour
 
     private void GameOver()
     {
+        KilledEffectParent.Play(true);
+        SEManager.Instance.PlaySE("PlayerDead");
         ChangeState(ShootingState.Failure);
         uIFunctionsForGame.Failure();
     }
