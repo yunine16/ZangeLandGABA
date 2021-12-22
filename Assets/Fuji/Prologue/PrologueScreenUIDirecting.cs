@@ -38,6 +38,7 @@ public class PrologueScreenUIDirecting : MonoBehaviour
     }
     void Start()
     {
+        fadeScreen.DOFade(0, 1);
         myAudioSource = GetComponent<AudioSource>();
         StartCoroutine("ShowTextOneByOne", narrationInfos[0].narrationText);
         nextText++;
