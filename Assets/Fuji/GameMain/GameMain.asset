@@ -13,13 +13,42 @@ MonoBehaviour:
   m_Name: GameMain
   m_EditorClassIdentifier: 
   SEName:
-  - Respawn
+  - PlayerRespawn
   - EnemyHit
   - PlayerShot
   - PlayerHit
   - PlayerDead
   - Pause
+  - Glaze0
+  - Glaze1
+  - Glaze2
+  - Glaze3
+  - Glaze4
+  - Zange0
+  - Zange1
+  - Zange2
+  - Zange3
+  - Zange4
+  - AddLife
+  - EndLight
+  - SEVolumeChanged
   SEClip:
   - {fileID: 8300000, guid: 55042d7de782e354fa8f885dff82c4b2, type: 3}
   - {fileID: 8300000, guid: 02ef19f6cc920c34f9ea72084b14a1fe, type: 3}
   - {fileID: 8300000, guid: 483f81d4cbe9ca547a0ef896ad76cd74, type: 3}
+  - {fileID: 8300000, guid: 0699fcee84070a34a8bebbbf68bf75e1, type: 3}
+  - {fileID: 8300000, guid: 1cbd0d0ab113cf04ba11aa73da410bb6, type: 3}
+  - {fileID: 8300000, guid: 483f81d4cbe9ca547a0ef896ad76cd74, type: 3}
+  - {fileID: 8300000, guid: c61cbb160fb7e9049a6ad0694ab9f5c5, type: 3}
+  - {fileID: 8300000, guid: f3dd8c5130a1e344da5473bb0f9e29c7, type: 3}
+  - {fileID: 8300000, guid: c12fe3fcfde934a40b76971d186c237b, type: 3}
+  - {fileID: 8300000, guid: 9cd159e3a25419c47ad3d27da91f3930, type: 3}
+  - {fileID: 8300000, guid: 6ba2fc1b05cc3d74eae563dc31dc9689, type: 3}
+  - {fileID: 8300000, guid: c7e1a5de97e2cf44394c6c4e07b46726, type: 3}
+  - {fileID: 8300000, guid: 6fe5502eaeab240408f10456958ecb58, type: 3}
+  - {fileID: 8300000, guid: f64c355d80004d7449795d50d0d864ac, type: 3}
+  - {fileID: 8300000, guid: 38c5ca9eb0881544c8979e83d5946d18, type: 3}
+  - {fileID: 8300000, guid: 43ebd957a55e22e43a80201f40b20c3e, type: 3}
+  - {fileID: 8300000, guid: 41cda4140750aca4ea69ec3540427764, type: 3}
+  - {fileID: 8300000, guid: 3498fe1923587e64f94b3a647adea02f, type: 3}
+  - {fileID: 8300000, guid: 8e58bd5d1b5983f46909f7f0342873c6, type: 3}
