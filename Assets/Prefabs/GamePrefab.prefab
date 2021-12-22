@@ -19805,6 +19805,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grazeGauge: {fileID: 7242332368473149339}
   shootingManager: {fileID: 7242332366974018233}
+  glazeEffectParent: {fileID: 0}
+  addLifeEffectParent: {fileID: 0}
 --- !u!1 &7242332366974018232
 GameObject:
   m_ObjectHideFlags: 0
@@ -19854,6 +19856,8 @@ MonoBehaviour:
   stageProgressScreen: {fileID: 0}
   enemyCreater: {fileID: 7242332368373222393}
   uIFunctionsForGame: {fileID: 0}
+  KilledEffectParent: {fileID: 0}
+  RespawnEffectParent: {fileID: 0}
   shootingState: 0
 --- !u!114 &7242332366974018235
 MonoBehaviour:
@@ -20858,7 +20862,7 @@ GameObject:
   - component: {fileID: 7465537093818626487}
   m_Layer: 0
   m_Name: EnemyCreater
-  m_TagString: Untagged
+  m_TagString: EnemyCreater
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20894,6 +20898,7 @@ MonoBehaviour:
   CircleEnemyRoot: {fileID: 8236478963856786787, guid: 95c2b703d78dc4987b9399f1a3561c17, type: 3}
   SnakeEnemyRoot: {fileID: 1986082423237573594, guid: ba8ebccb5c2e746f2a0ca180f082e844, type: 3}
   shootingManager: {fileID: 7242332366974018233}
+  prefabHitEffect: {fileID: 1598543958754350771, guid: e1413101eb6934545bd5880a25ca500d, type: 3}
 --- !u!114 &7465537093818626487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21156,6 +21161,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.05
   prefabBullet: {fileID: 8540808558181894440, guid: 81bcee0afb1f6418d9c0b62ecb901df1, type: 3}
+  hitEffectParent: {fileID: 0}
+  shotEffectParent: {fileID: 0}
   player: {fileID: 7242332368218898599}
   shootingManager: {fileID: 7242332366974018233}
 --- !u!58 &7242332368549710479
