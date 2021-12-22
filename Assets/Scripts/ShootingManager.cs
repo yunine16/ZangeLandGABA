@@ -102,11 +102,16 @@ public class ShootingManager : MonoBehaviour
         uIFunctionsForGame.Success();
     }
 
+    void ReStart()
+    {
+        ChangeState(ShootingState.Playing);
+    }
+
     public void Revenge()
     {
         RespawnEffectParent.Play(true);
         SEManager.Instance.PlaySE("PlayerRespawn");
-        ChangeState(ShootingState.Playing);
+        Invoke("ReStart",2f);
         for (int i = 0; i < 3; i++)
         {
             AddLeft();
@@ -118,6 +123,6 @@ public class ShootingManager : MonoBehaviour
         KilledEffectParent.Play(true);
         SEManager.Instance.PlaySE("PlayerDead");
         ChangeState(ShootingState.Failure);
-        uIFunctionsForGame.Failure();
+        uIFunctionsForGame.Invoke("Failure",2f);
     }
 }
