@@ -15,6 +15,7 @@ public class TileEnemyRoot : MonoBehaviour
     Tweener tweener;
     bool isTweenMove;
 
+
     public enum TileState
     {
         Appear,

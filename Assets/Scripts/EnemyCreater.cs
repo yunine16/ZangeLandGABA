@@ -12,8 +12,9 @@ public class EnemyCreater : MonoBehaviour
     GameObject prefabEnemy;
     Vector2[] vector2 = { new Vector2(0, -1.5f), new Vector2(-3, 0), new Vector2(3, 0), new Vector2(-3, -1.5f), new Vector2(3, -1.5f) };
     List<int[]> indexes = new List<int[]>();
-    public GameObject TileEnemyRoot,CircleEnemyRoot;
+    public GameObject TileEnemyRoot,CircleEnemyRoot,SnakeEnemyRoot;
     [SerializeField] ShootingManager shootingManager;
+    GetRandomZange getRandomZange;
 
     enum EnemyType
     {
@@ -30,6 +31,8 @@ public class EnemyCreater : MonoBehaviour
         indexes.Add(new int[] { 1, 2 });
         indexes.Add(new int[] { 0, 1, 2});
         indexes.Add(new int[] { 1, 2, 3, 4 });
+        getRandomZange = GetComponent<GetRandomZange>();
+        //zange = getRandomZange.GetZange();
     }
 
     public IEnumerator Create(int num)
@@ -38,8 +41,9 @@ public class EnemyCreater : MonoBehaviour
         for (int i = 0; i < num; i++)
         {
             if (shootingManager.CheckProgress(i) >= 100) yield break;
-            EnemyType enemyType = (EnemyType)(int)UnityEngine.Random.Range(0, 2);
+            EnemyType enemyType = (EnemyType)(int)UnityEngine.Random.Range(0, 3);
             Vector2 vec = vector2[arr[i]];
+            zange = getRandomZange.GetZange();
             switch (enemyType)
             {
                 case EnemyType.Tile:
@@ -47,6 +51,9 @@ public class EnemyCreater : MonoBehaviour
                     break;
                 case EnemyType.Circle:
                     Instantiate(CircleEnemyRoot, transform.position + (Vector3)vec, Quaternion.identity).GetComponent<CircleEnemyRoot>().Init(zange);
+                    break;
+                case EnemyType.Snake:
+                    Instantiate(SnakeEnemyRoot, transform.position + (Vector3)vec, Quaternion.identity).GetComponent<SnakeEnemyRoot>().Init(zange);
                     break;
                 default:
                     break;
