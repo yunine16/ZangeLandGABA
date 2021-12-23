@@ -103,7 +103,7 @@ public class EpilogueScreenUIDirecting : MonoBehaviour
     {
         fadeBlack.DOFade(1, 1);
         yield return new WaitForSeconds(1);
-        titleScene.allowSceneActivation = true;
+        SceneManager.LoadScene("Fuji_Title");
     }
     IEnumerator ShowTextOneByOne(string narrationText)
     {

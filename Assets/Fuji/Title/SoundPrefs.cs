@@ -31,7 +31,7 @@ public class SoundPrefs : MonoBehaviour
         yield return null;
         if (bgmSource != null)
         {
-            bgmSource.PlayDelayed(0.2f);
+            bgmSource.Play();
         }
     }
 }

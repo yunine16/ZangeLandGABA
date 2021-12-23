@@ -13,7 +13,7 @@ public class UIFunctionsForGame : MonoBehaviour
                  changingSEVolume = false,
                  initialized = false,
                  loadStarted;
-    private AsyncOperation clearScene,titleScene;
+    private AsyncOperation clearScene;
     private SoundPrefs soundPrefs;
     private AudioSource myAudioSource;
     [SerializeField] private Material crackMat;
@@ -37,8 +37,6 @@ public class UIFunctionsForGame : MonoBehaviour
         {
             clearScene = SceneManager.LoadSceneAsync("Fuji_Clear");
             clearScene.allowSceneActivation = false;
-            titleScene = SceneManager.LoadSceneAsync("Fuji_Title");
-            titleScene.allowSceneActivation = false;
             loadStarted = true;
         }
         return null;
@@ -93,12 +91,11 @@ public class UIFunctionsForGame : MonoBehaviour
     public void TitleButton()
     {
         fadeBlack.DOFade(1, 1);
-        StartCoroutine("AllowChangeSceneToTitle");
+        Invoke("AllowChangeSceneToTitle",1);
     }
-    IEnumerator AllowChangeSceneToTitle()
+    void AllowChangeSceneToTitle()
     {
-        yield return new WaitForSeconds(1);
-        titleScene.allowSceneActivation = true;
+        SceneManager.LoadScene("Fuji_Title");
     }
     public void Failure()
     {
