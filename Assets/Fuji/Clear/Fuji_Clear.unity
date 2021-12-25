@@ -401,10 +401,10 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     italic: 0
   - narrationText: "\u30BA\u30C3\u30B4\u30B4\u30B4"
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 1cf9dea74cdb1f041ad21c5cb74d470c, type: 3}
     italic: 1
   - narrationText: "\u30BA\u30C3\u30B4\u30B4\u30B4\u3001\u30BA\u30C3\u30B4\u30B4\u30B4"
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 69c9cd37d0d81ce4594f5da45d2790f7, type: 3}
     italic: 1
   - narrationText: "Zluck\u306E\u901A\u77E5\u97F3\u306B\u76EE\u3092\u899A\u307E\u3057\u305F"
     audioClip: {fileID: 0}

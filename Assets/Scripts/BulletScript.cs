@@ -26,6 +26,8 @@ public class BulletScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
+            int SEnumber = Random.Range(0, 4);
+            SEManager.Instance.PlaySE("BulletHit" + SEnumber);
             Destroy(collision.gameObject);
             shootingManager.AddScore(50);
             objectPool.Release(gameObject);

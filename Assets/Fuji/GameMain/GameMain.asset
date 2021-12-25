@@ -14,11 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SEName:
   - PlayerRespawn
-  - EnemyHit
   - PlayerShot
   - PlayerHit
   - PlayerDead
-  - Pause
+  - PauseButton
   - Glaze0
   - Glaze1
   - Glaze2
@@ -32,9 +31,12 @@ MonoBehaviour:
   - AddLife
   - EndLight
   - SEVolumeChanged
+  - BulletHit0
+  - BulletHit1
+  - BulletHit2
+  - BulletHit3
   SEClip:
   - {fileID: 8300000, guid: 55042d7de782e354fa8f885dff82c4b2, type: 3}
-  - {fileID: 8300000, guid: 02ef19f6cc920c34f9ea72084b14a1fe, type: 3}
   - {fileID: 8300000, guid: 483f81d4cbe9ca547a0ef896ad76cd74, type: 3}
   - {fileID: 8300000, guid: 0699fcee84070a34a8bebbbf68bf75e1, type: 3}
   - {fileID: 8300000, guid: 1cbd0d0ab113cf04ba11aa73da410bb6, type: 3}
@@ -52,3 +54,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 41cda4140750aca4ea69ec3540427764, type: 3}
   - {fileID: 8300000, guid: 3498fe1923587e64f94b3a647adea02f, type: 3}
   - {fileID: 8300000, guid: 8e58bd5d1b5983f46909f7f0342873c6, type: 3}
+  - {fileID: 8300000, guid: c7b33922bf664e347a19ebb5357baf73, type: 3}
+  - {fileID: 8300000, guid: 1c7efe8962746e245ab21ad9f46171e5, type: 3}
+  - {fileID: 8300000, guid: c2d59fc08c5278e40b54d3f958704637, type: 3}
+  - {fileID: 8300000, guid: a0d4ff973547eb749b848ae5181405c6, type: 3}

@@ -91,14 +91,14 @@ public class ShootingManager : MonoBehaviour
     public void AddLeft()
     {
         playerLeft++;
-        leftText.text = "×" + playerLeft.ToString();
+        leftText.text = "x" + playerLeft.ToString();
     }
 
     public void ReduceLeft()
     {
         if (playerLeft <= 0) { GameOver(); return; }
         playerLeft--;
-        leftText.text = "×" + playerLeft.ToString();
+        leftText.text = "x" + playerLeft.ToString();
     }
 
     void GameCrear()
@@ -106,7 +106,7 @@ public class ShootingManager : MonoBehaviour
         uIFunctionsForGame.Success();
     }
 
-    void ReStart()
+    public void ReStart()
     {
         ChangeState(ShootingState.Playing);
     }

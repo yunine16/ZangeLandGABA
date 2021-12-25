@@ -25,10 +25,11 @@ public class PrologueScreenUIDirecting : MonoBehaviour
     private bool playing = false,loadStarted = false, changeSceneExecuted = false;
     [SerializeField] private float speed = 0.1f;
     private int nextText = 0;
-    [SerializeField] private int enterZangeScreen = 0;
+    [SerializeField] private int enterZangeScreen = 0,ittekimaaa = 0;
     [SerializeField] private AudioClip[] BGMs;
     [SerializeField] private VolControl volControl;
     private AudioSource myAudioSource;
+    private bool footStepsEnded = true;
     private void Awake()
     {
         for(int i = 0; i < narrationInfos.Length; i++)
@@ -60,7 +61,13 @@ public class PrologueScreenUIDirecting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && playing == false)
+        if (Input.GetKeyDown(KeyCode.Escape) && changeSceneExecuted == false)
+        {
+            nextText = narrationInfos.Length;
+            StartCoroutine("FadeAndChangeScene");
+            changeSceneExecuted = true;
+        }
+        if (Input.GetMouseButtonDown(0) && playing == false && footStepsEnded)
         {
             if (nextText < narrationInfos.Length)
             {
@@ -79,6 +86,10 @@ public class PrologueScreenUIDirecting : MonoBehaviour
                 StartCoroutine("ShowTextOneByOne", narrationInfos[nextText].narrationText);
                 nextText++;
                 SEManager.Instance.PlaySE("Click");
+                if(nextText == ittekimaaa + 1)
+                {
+                    StartCoroutine("StopWhileSE");
+                }
             }
             else
             {
@@ -102,6 +113,12 @@ public class PrologueScreenUIDirecting : MonoBehaviour
                 myAudioSource.Play();
             }
         }
+    }
+    IEnumerator StopWhileSE()
+    {
+        footStepsEnded = false;
+        yield return new WaitForSeconds(3);
+        footStepsEnded = true;
     }
     IEnumerator ShowTextOneByOne(string narrationText)
     {

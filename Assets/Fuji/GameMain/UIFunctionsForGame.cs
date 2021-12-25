@@ -16,9 +16,10 @@ public class UIFunctionsForGame : MonoBehaviour
     private AsyncOperation clearScene;
     private SoundPrefs soundPrefs;
     private AudioSource myAudioSource;
-    [SerializeField] private Material crackMat;
+
     private void Start()
     {
+        SEManager.Instance.PlaySE("PlayerRespawn");
         myAudioSource = GetComponent<AudioSource>();
         soundPrefs = GetComponent<SoundPrefs>();
         StartCoroutine("FadeIn");
@@ -26,8 +27,8 @@ public class UIFunctionsForGame : MonoBehaviour
     }
     IEnumerator FadeIn()
     {
-        yield return new WaitForSeconds(0.8f);
-        fadeBlack.DOFade(0, 1);
+        fadeBlack.DOFade(0, .5f).SetDelay(1);
+        myAudioSource.DOFade(PlayerPrefs.GetFloat(SoundPrefs.bgmVolumeKey), 0.1f);
         yield return new WaitForSeconds(1);
         myAudioSource.Play();
     }
@@ -55,7 +56,9 @@ public class UIFunctionsForGame : MonoBehaviour
             SEManager.Instance.PlaySE("SEVolumeChanged");
             changingSEVolume = false;
         }
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && 
+            ShootingManager.ShootingState.Failure != shootingManager.shootingState &&
+            ShootingManager.ShootingState.Start != shootingManager.shootingState)
         {
             PauseButton();
         }
@@ -122,7 +125,7 @@ public class UIFunctionsForGame : MonoBehaviour
         fadeWhite.DOFade(1, 2);
         SEManager.Instance.PlaySE("EndLight");
         myAudioSource.DOFade(0, 1);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
         clearScene.allowSceneActivation = true;
     }
 }

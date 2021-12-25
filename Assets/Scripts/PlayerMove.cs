@@ -19,13 +19,13 @@ public class PlayerMove : MonoBehaviour
     bool isInvincible;
 
     public ShootingManager shootingManager;
-    Renderer[] shipRenderers;
+    MeshRenderer[] shipRenderers;
     int left=2;
 
     // Start is called before the first frame update
     void Start()
     {
-        shipRenderers = GetComponentsInChildren<Renderer>();
+        shipRenderers = GetComponentsInChildren<MeshRenderer>();
 
         // オブジェクトプールを作成
         objectPool = new ObjectPool<GameObject>(() =>
@@ -108,10 +108,10 @@ public class PlayerMove : MonoBehaviour
         for (int i = 0; i < 4; i++)
         {
             shipRenderers[0].enabled = false;
-            shipRenderers[1].enabled = false;
+            //shipRenderers[1].enabled = false;
             yield return StartCoroutine(wait(0.125f));
             shipRenderers[0].enabled = true;
-            shipRenderers[1].enabled = true;
+            //shipRenderers[1].enabled = true;
             yield return StartCoroutine(wait(0.125f));
         }
         isInvincible = false;

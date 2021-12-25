@@ -93,6 +93,11 @@ public class CircleEnemyRoot : MonoBehaviour
         }
         yield return StartCoroutine(wait(3f));
         GameObject player = GameObject.FindGameObjectWithTag("Player");
+        /*
+        moveVec = new Vector3((player.transform.position - transform.position).x,
+                              (player.transform.position - transform.position).y,
+                              0).normalized;
+        */
         moveVec = (player.transform.position - transform.position).normalized;
         isAttack = true;
         for (int i = 0; i < transform.childCount; i++)

@@ -220,6 +220,7 @@ MonoBehaviour:
   blackAreaLeft: {fileID: 1457626916997270188}
   speed: 0.1
   enterZangeScreen: 7
+  ittekimaaa: 6
   BGMs:
   - {fileID: 8300000, guid: 4168048ff7e4d9e4cb58fcefd7108977, type: 3}
   - {fileID: 8300000, guid: a6e9656a8c29f5f4cada4358dffdeddd, type: 3}
