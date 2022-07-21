@@ -5,11 +5,11 @@ using UnityEngine.Pool;
 
 public class EnemyDefault : MonoBehaviour
 {
-    EnemyCreater enemyCreater;
+    EnemyGenerator enemyGenerator;
 
     private void Start()
     {
-        enemyCreater = GameObject.FindGameObjectWithTag("EnemyCreater").GetComponent<EnemyCreater>();
+        enemyGenerator = GameObject.FindGameObjectWithTag("EnemyGenerator").GetComponent<EnemyGenerator>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -20,6 +20,6 @@ public class EnemyDefault : MonoBehaviour
 
     private void OnDestroy()
     {
-        enemyCreater.Effect(transform.position);
+        enemyGenerator.Effect(transform.position);
     }
 }

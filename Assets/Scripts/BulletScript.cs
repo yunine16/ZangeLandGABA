@@ -6,7 +6,7 @@ using UnityEngine.Pool;
 public class BulletScript : MonoBehaviour
 {
     Vector2 vector;
-    float speed = 0.3f;
+    float speed = 10f;
     public ObjectPool<GameObject> objectPool;
     ShootingManager shootingManager;
 
@@ -43,6 +43,6 @@ public class BulletScript : MonoBehaviour
     void Update()
     {
         if (shootingManager.shootingState != ShootingManager.ShootingState.Playing) return;
-        transform.Translate(vector, Space.World);
+        transform.Translate(vector*Time.unscaledDeltaTime, Space.World);
     }
 }

@@ -5,7 +5,7 @@ using System;
 using System.Linq;
 using UnityEngine.Pool;
 
-public class EnemyCreater : MonoBehaviour
+public class EnemyGenerator : MonoBehaviour
 {
 
     string zange = "脳死で改行コード変更してコンフリクト";
@@ -73,7 +73,7 @@ public class EnemyCreater : MonoBehaviour
         effect.GetComponent<EnemyHitEffect>().Play();
     }
 
-    public IEnumerator Create(int num)
+    public IEnumerator Generate(int num)
     {
         int[] arr = indexes[num - 1].OrderBy(i => Guid.NewGuid()).ToArray<int>();
         for (int i = 0; i < num; i++)

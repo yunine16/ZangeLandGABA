@@ -84,9 +84,9 @@ public class TileEnemyRoot : MonoBehaviour
 
         foreach (Transform item in children)
         {
-            yield return StartCoroutine(wait(0.5f));
+            yield return StartCoroutine(wait(0.2f));
             StartCoroutine(TileRot(item));
-            yield return StartCoroutine(wait(0.5f));
+            yield return StartCoroutine(wait(0.2f));
         }
         yield return null;
     }

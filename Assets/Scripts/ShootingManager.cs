@@ -11,7 +11,7 @@ public class ShootingManager : MonoBehaviour
     int shootingProgress = 0;
     int score = 0;
     int playerLeft = 2;
-    int existEnemy=0;
+    int exsistingEnemy=0;
     float level=1;
 
     public TextMeshProUGUI scoreText;
@@ -19,7 +19,7 @@ public class ShootingManager : MonoBehaviour
     [SerializeField] private Image crackImage;
     [SerializeField] private Material crackMat;
     [SerializeField] StageProgressScreen stageProgressScreen;
-    [SerializeField] EnemyCreater enemyCreater;
+    [SerializeField] EnemyGenerator enemyGenerator;
     [SerializeField] UIFunctionsForGame uIFunctionsForGame;
     [SerializeField] private ParticleSystem KilledEffectParent,RespawnEffectParent;
 
@@ -51,21 +51,21 @@ public class ShootingManager : MonoBehaviour
 
     public void Eliminate()
     {
-        existEnemy--;
+        exsistingEnemy--;
         shootingProgress += progressPerEnemy;
         stageProgressScreen.stageProgress = shootingProgress;
         if (shootingProgress >= 100) { GameCrear(); return; }
         level += 0.4f;
         if (level > 4) level = 4;
-        if (existEnemy <= 0) Make();
+        if (exsistingEnemy <= 0) Make();
         Debug.Log("shootingProgress = " + shootingProgress.ToString());
     }
 
     void Make()
     {
         int num = (int)Random.Range(1, level);
-        StartCoroutine(enemyCreater.Create(num));
-        existEnemy = num;
+        StartCoroutine(enemyGenerator.Generate(num));
+        exsistingEnemy = num;
     }
 
 

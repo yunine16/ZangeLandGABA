@@ -12,7 +12,7 @@ public class SnakeEnemyScript : MonoBehaviour
     float speed = 3;
 
     public ObjectPool<GameObject> objectPool;
-    EnemyCreater enemyCreater;
+    EnemyGenerator enemyGenerator;
 
     Color color;
 
@@ -21,7 +21,7 @@ public class SnakeEnemyScript : MonoBehaviour
     {
         shootingManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<ShootingManager>();
         ColorUtility.TryParseHtmlString("#7B5234", out color);
-        enemyCreater = GameObject.FindGameObjectWithTag("EnemyCreater").GetComponent<EnemyCreater>();
+        enemyGenerator = GameObject.FindGameObjectWithTag("EnemyGenerator").GetComponent<EnemyGenerator>();
     }
 
     // Update is called once per frame
@@ -56,7 +56,6 @@ public class SnakeEnemyScript : MonoBehaviour
 
     private void OnDestroy()
     {
-        Debug.Log(transform.position);
-        enemyCreater.Effect(transform.position);
+        enemyGenerator.Effect(transform.position);
     }
 }
