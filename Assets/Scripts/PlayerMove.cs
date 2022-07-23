@@ -7,7 +7,7 @@ using TMPro;
 public class PlayerMove : MonoBehaviour
 {
     Vector2 vector;
-    public float speed = 0.2f;
+    public float speed = 50f;
     float shotCoolDown = 0.2f;
     public GameObject prefabBullet;
     float elapsedTime;
@@ -64,7 +64,7 @@ public class PlayerMove : MonoBehaviour
         if (Input.GetKey(KeyCode.S) && transform.position.y > -4.45f) vector += Vector2.down * speed;
         if (Input.GetKey(KeyCode.D) && transform.position.x < 6f) vector += Vector2.right * speed;
 
-        player.transform.Translate(vector,Space.World);
+        player.transform.Translate(vector*Time.deltaTime,Space.World);
 
         //カーソルの方向を向く
         var pos = Camera.main.WorldToScreenPoint(player.transform.localPosition);

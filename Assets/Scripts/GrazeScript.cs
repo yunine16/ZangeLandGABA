@@ -24,6 +24,7 @@ public class GrazeScript : MonoBehaviour
             SEManager.Instance.PlaySE("Glaze" + seRandomNumber);
             glazeEffectParent.Play();
             grazePoint += 50;
+            shootingManager.AddScore(10);
             if (grazePoint >= maxGraze)
             {
                 shootingManager.AddLeft();

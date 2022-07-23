@@ -32,6 +32,7 @@ public class PrologueScreenUIDirecting : MonoBehaviour
     private bool footStepsEnded = true;
     private void Awake()
     {
+        //インスペクタ内の\を改行に変換
         for(int i = 0; i < narrationInfos.Length; i++)
         {
             narrationInfos[i].narrationText = narrationInfos[i].narrationText.Replace("\\n", "\n");
@@ -43,12 +44,12 @@ public class PrologueScreenUIDirecting : MonoBehaviour
         myAudioSource = GetComponent<AudioSource>();
         StartCoroutine("ShowTextOneByOne", narrationInfos[0].narrationText);
         nextText++;
-        StartCoroutine("PreloadPrologueScene");
+        StartCoroutine("PreloadGameScene");
         myAudioSource.clip = BGMs[0];
         myAudioSource.Play();
         myAudioSource.DOFade(PlayerPrefs.GetFloat(SoundPrefs.bgmVolumeKey), 1);
     }
-    IEnumerator PreloadPrologueScene()
+    IEnumerator PreloadGameScene()
     {
         if (!loadStarted)
         {
@@ -86,6 +87,7 @@ public class PrologueScreenUIDirecting : MonoBehaviour
                 StartCoroutine("ShowTextOneByOne", narrationInfos[nextText].narrationText);
                 nextText++;
                 SEManager.Instance.PlaySE("Click");
+                //シナリオの｢いってきまああ｣の時はSEを聞かせるためスキップ無効にする
                 if(nextText == ittekimaaa + 1)
                 {
                     StartCoroutine("StopWhileSE");
@@ -99,6 +101,7 @@ public class PrologueScreenUIDirecting : MonoBehaviour
                     changeSceneExecuted = true;
                 }
             }
+            //ザンゲランド突入時の画面の変化
             if(nextText == enterZangeScreen +1)
             {
                 blackAreaLeft.rectTransform.DOScaleX(1, 2).SetEase(Ease.Linear);
@@ -106,6 +109,7 @@ public class PrologueScreenUIDirecting : MonoBehaviour
                 volControl.EnterZangeScreen();
                 myAudioSource.DOFade(0, 1);
             }
+            //ザンゲランド突入時のBGM変更、画面より一回遅く
             if (nextText == enterZangeScreen + 2)
             {
                 myAudioSource.clip = BGMs[1];

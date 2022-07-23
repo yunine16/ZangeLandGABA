@@ -57,11 +57,11 @@ public class ShootingManager : MonoBehaviour
         if (shootingProgress >= 100) { GameCrear(); return; }
         level += 0.4f;
         if (level > 4) level = 4;
-        if (exsistingEnemy <= 0) Make();
+        if (exsistingEnemy <= 0) RandomEnemy();
         Debug.Log("shootingProgress = " + shootingProgress.ToString());
     }
 
-    void Make()
+    void RandomEnemy()
     {
         int num = (int)Random.Range(1, level);
         StartCoroutine(enemyGenerator.Generate(num));
@@ -73,7 +73,7 @@ public class ShootingManager : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         ChangeState(ShootingState.Playing);
-        Make();
+        RandomEnemy();
     }
 
     // Update is called once per frame

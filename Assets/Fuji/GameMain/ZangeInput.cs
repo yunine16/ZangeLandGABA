@@ -17,11 +17,6 @@ public class ZangeInput : MonoBehaviour
     //zanges検索のために、NCMBQuery作成
     NCMBQuery<NCMBObject> zangesQuery = new NCMBQuery<NCMBObject>("Zange");
 
-    private void Start()
-    {
-        //NativeLeakDetection.Mode = NativeLeakDetectionMode.EnabledWithStackTrace;
-    }
-
     //入力欄が更新されるたび実行、Null、入力無し、スペースのみのいずれかのとき送信ボタンが押せない。
     public void OnInputChange()
     {
@@ -33,48 +28,42 @@ public class ZangeInput : MonoBehaviour
             SEManager.Instance.PlaySE("Zange" + typeSENumber);
         }
     }
-
+    //NCMBにザンゲを登録
     public void sendToNCMB()
     {
         int typeSENumber = Random.Range(0, 5);
         SEManager.Instance.PlaySE("Zange" + typeSENumber);
-        //検索条件設定。zangeの値が入力欄なもの
+        //検索条件設定。zangeの値が入力欄であるもの
         zangesQuery.WhereEqualTo("zangeText", zangeInputField.text);
         //一致するNCMBオブジェクトをリスト化
-        zangesQuery.FindAsync((List<NCMBObject> objList, NCMBException fae) =>
+        zangesQuery.FindAsync((List<NCMBObject> objList, NCMBException findAsyncError) =>
         {
             //エラーなら
-            if (fae != null)
+            if (findAsyncError != null)
             {
-                infoText.text = "sorry, error occured";
+                infoText.text = "エラーが起きました。";
+                //エラーなら復活OKとする
                 gameUIscript.Revenge();
             }
             else
             {
-                //リストの長さが0ならまだない懺悔なので登録
+                //検索の結果、リストの長さが0ならまだないザンゲなので登録
                 if (objList.Count == 0)
                 {
                     //このタイミングでNCMBオブジェクト生成することで、ID更新ができる。
                     NCMBObject zanges = new NCMBObject("Zange");
                     //zangesのzangeフィールドに入力欄の内容を追加する。
                     zanges.Add("zangeText", zangeInputField.text);
-                    zanges.SaveAsync((NCMBException sae) =>
-                    {
-                        if (sae != null)
-                        {
-                            infoText.text = "sorry, error occured";
-                        }
-                        else
-                        {
-                            infoText.text = "successfully sent";
-                        }
-                    });
+                    //保存。エラーがあってもなくても復活
+                    zanges.SaveAsync();
                     gameUIscript.Revenge();
+                    //次回表示時のためにテキストをリセット
+                    infoText.text = "懺悔を入力し、" + "\n" + "リベンジしますか?";
                 }
                 //既出の懺悔なら登録しない
                 else
                 {
-                    infoText.text = "already exsists";
+                    infoText.text = "その懺悔は既出です。";
                 }
             }
         });

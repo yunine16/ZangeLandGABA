@@ -8,7 +8,7 @@ using UnityEngine.Pool;
 public class EnemyGenerator : MonoBehaviour
 {
 
-    string zange = "脳死で改行コード変更してコンフリクト";
+    string zange = "改行コード変更してコンフリクト";
     [SerializeField]
     GameObject prefabEnemy;
     Vector2[] vector2 = { new Vector2(0, -1.5f), new Vector2(-3, 0), new Vector2(3, 0), new Vector2(-3, -1.5f), new Vector2(3, -1.5f) };
@@ -25,8 +25,8 @@ public class EnemyGenerator : MonoBehaviour
     {
         Tile = 0,
         Circle = 1,
-        Snake = 2,
-        HourGlass = 3
+        Snake = 2
+        //HourGlass = 3
     }
 
     // Start is called before the first frame update

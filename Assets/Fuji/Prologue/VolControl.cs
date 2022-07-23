@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class VolControl : MonoBehaviour
 {
@@ -11,17 +12,25 @@ public class VolControl : MonoBehaviour
     private VolumeProfile vProfile;
     private Vignette vignette;
     private FilmGrain filmGrain;
-    public int stageProgress = 0;
     // Start is called before the first frame update
     void Start()
     {
-        //各種Volumeの項目、ゲームの途中でタイトルに戻ったときにリセットされるよう初期値を設定
+        //各種Volumeの項目を取得、初期値を設定
         volume = GetComponent<Volume>();
         vProfile = volume.sharedProfile;
         vProfile.TryGet(out vignette);
         vProfile.TryGet(out filmGrain);
-        vignette.intensity.value = 0;
-        filmGrain.intensity.value = 0.1f;
+        //タイトル画面とプロローグ画面とで画面エフェクトの初期値が異なる。
+        if (SceneManager.GetActiveScene().name == "Fuji_Title")
+        {
+            vignette.intensity.value = 0.4f;
+            filmGrain.intensity.value = 0.7f;
+        }
+        else if (SceneManager.GetActiveScene().name == "Fuji_Prologue")
+        {
+            vignette.intensity.value = 0;
+            filmGrain.intensity.value = 0.1f;
+        }
     }
     public void EnterZangeScreen()
     {
